@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 21232469438057907}
   - component: {fileID: 7652697216381365836}
   - component: {fileID: 5759796037400189281}
+  - component: {fileID: 5772644149539599880}
   m_Layer: 0
   m_Name: Diente
   m_TagString: Untagged
@@ -108,3 +109,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5772644149539599880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993439189365301658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae8d7dc7467aa74b98c68dbdb288cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMine: 0
+  isRevealed: 0
+  adjacentMines: 0
+  defaultMaterial: {fileID: 0}
+  revealedMaterial: {fileID: 0}
+  mineMaterial: {fileID: 0}

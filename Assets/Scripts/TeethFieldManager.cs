@@ -6,13 +6,21 @@ public class TeethFieldManager : MonoBehaviour
     public GameObject toothPrefab;
     public int rows = 2;
     public int cols = 15;
-    public float spacing = 1.2f;
     public int numberOfBombs = 5;
+
+    [Tooltip("Provide spawn points row-major: first 15 for row 0 (top), next 15 for row 1 (bottom)")]
+    public List<Transform> spawnPoints; // Should contain rows * cols = 30
 
     private Tooth[,] grid;
 
     void Start()
     {
+        if (spawnPoints.Count != rows * cols)
+        {
+            Debug.LogError("Spawn point count doesn't match grid size.");
+            return;
+        }
+
         GenerateGrid();
     }
 
@@ -20,20 +28,21 @@ public class TeethFieldManager : MonoBehaviour
     {
         grid = new Tooth[cols, rows];
 
-        // Instantiate the grid
+        // Instantiate teeth at spawn points
         for (int x = 0; x < cols; x++)
         {
             for (int y = 0; y < rows; y++)
             {
-                Vector3 position = new Vector3(x * spacing, 0, y * spacing);
-                GameObject toothObj = Instantiate(toothPrefab, position, Quaternion.identity, transform);
+                int index = y * cols + x;
+                Transform spawn = spawnPoints[index];
 
+                GameObject toothObj = Instantiate(toothPrefab, spawn.position, spawn.rotation, spawn);
                 Tooth tooth = toothObj.GetComponent<Tooth>();
                 grid[x, y] = tooth;
             }
         }
 
-        // Place bombs
+        // Place bombs randomly
         List<Vector2Int> availablePositions = new List<Vector2Int>();
         for (int x = 0; x < cols; x++)
             for (int y = 0; y < rows; y++)
@@ -47,7 +56,7 @@ public class TeethFieldManager : MonoBehaviour
             availablePositions.RemoveAt(index);
         }
 
-        // Calculate adjacent mine counts
+        // Compute adjacency
         for (int x = 0; x < cols; x++)
         {
             for (int y = 0; y < rows; y++)

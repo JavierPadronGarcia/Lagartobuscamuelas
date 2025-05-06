@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerOptions:
-    triggerType: 0
+    triggerType: 1
     minimumCollisionForce: 0
     filterCollisionsByTag: 1
     triggerAllowedTags:

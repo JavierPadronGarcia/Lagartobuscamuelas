@@ -464,11 +464,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4667249171344557641, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6227617106621624782, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
       propertyPath: m_Name
       value: Martillo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349243612552602159, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6712369434086058868, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
       propertyPath: m_LocalPosition.x

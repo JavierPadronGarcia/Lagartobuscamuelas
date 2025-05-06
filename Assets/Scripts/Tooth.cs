@@ -15,7 +15,7 @@ public class Tooth : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
-        rend.material = defaultMaterial;
+        if (rend) rend.material = defaultMaterial;
     }
 
     public void Reveal()

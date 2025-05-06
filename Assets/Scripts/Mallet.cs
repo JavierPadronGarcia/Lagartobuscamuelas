@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Mallet : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        Tooth tooth = other.GetComponent<Tooth>();
+        Tooth tooth = other.gameObject.GetComponent<Tooth>();
 
         if (tooth != null)
         {

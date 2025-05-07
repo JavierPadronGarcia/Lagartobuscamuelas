@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 // ---------------------------------------------------------------------------------
 // SCRIPT PARA LA GESTIÓN DE ESCENAS (vinculado a un GameObject vacío "SceneManager")
 // ---------------------------------------------------------------------------------
@@ -15,7 +16,8 @@ public class SCManager : MonoBehaviour {
     [SerializeField] private GameObject UI; // Referencia al objeto Ui
     private bool Ayudabool;
     private bool Creditsbool;
-    private bool Dosjugadoresbool;    
+    private bool Dosjugadoresbool;
+    public Animator animatorAyuda;
 
     // Creamos una variable estática para almacenar la única instancia
     public static SCManager instance;
@@ -51,15 +53,18 @@ public class SCManager : MonoBehaviour {
                Application.Quit();
        #endif
   }
-    public void ActivarContext()
+    public void ActivarAyuda()
     {        
         if (Ayudabool == true)
         {
+            animatorAyuda.Play("MenuAyudaOut");
+            StartCoroutine(EjecutarConEspera());
             Ayuda.SetActive(false); // Desactiva el objeto Ayuda
             Ayudabool = false;
         }
         else
         {
+            animatorAyuda.Play("MenuAyuda");
             Ayuda.SetActive(true); // Activa el objeto Ayuda
             Ayudabool = true;
         }        
@@ -91,6 +96,10 @@ public class SCManager : MonoBehaviour {
             Dosjugadores.SetActive(true); // Activa el objeto Dosjugadores
             Dosjugadoresbool = true;
         }
+    }
+    IEnumerator EjecutarConEspera()
+    {        
+        yield return new WaitForSeconds(0.2f); // Espera 0.2 segundos        
     }
 }
 

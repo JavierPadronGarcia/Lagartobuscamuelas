@@ -15,7 +15,8 @@ public class SCManager : MonoBehaviour {
     [SerializeField] private GameObject UI; // Referencia al objeto Ui
     private bool Ayudabool;
     private bool Creditsbool;
-    private bool Dosjugadoresbool;    
+    private bool Dosjugadoresbool;
+    public Animator animatorAyuda;
 
     // Creamos una variable estática para almacenar la única instancia
     public static SCManager instance;
@@ -51,7 +52,7 @@ public class SCManager : MonoBehaviour {
                Application.Quit();
        #endif
   }
-    public void ActivarContext()
+    public void ActivarAyuda()
     {        
         if (Ayudabool == true)
         {
@@ -60,6 +61,7 @@ public class SCManager : MonoBehaviour {
         }
         else
         {
+            animatorAyuda.Play("MenuAyuda");
             Ayuda.SetActive(true); // Activa el objeto Ayuda
             Ayudabool = true;
         }        

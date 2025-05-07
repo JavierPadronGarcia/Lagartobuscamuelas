@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 // ---------------------------------------------------------------------------------
 // SCRIPT PARA LA GESTIÓN DE ESCENAS (vinculado a un GameObject vacío "SceneManager")
 // ---------------------------------------------------------------------------------
@@ -56,6 +57,8 @@ public class SCManager : MonoBehaviour {
     {        
         if (Ayudabool == true)
         {
+            animatorAyuda.Play("MenuAyudaOut");
+            StartCoroutine(EjecutarConEspera());
             Ayuda.SetActive(false); // Desactiva el objeto Ayuda
             Ayudabool = false;
         }
@@ -93,6 +96,10 @@ public class SCManager : MonoBehaviour {
             Dosjugadores.SetActive(true); // Activa el objeto Dosjugadores
             Dosjugadoresbool = true;
         }
+    }
+    IEnumerator EjecutarConEspera()
+    {        
+        yield return new WaitForSeconds(0.2f); // Espera 0.2 segundos        
     }
 }
 

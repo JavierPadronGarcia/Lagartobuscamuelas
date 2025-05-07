@@ -9,10 +9,13 @@ using UnityEngine.SceneManagement; // Se incluye la librería para el manejo de e
 
 public class SCManager : MonoBehaviour {
   
-    [SerializeField] private GameObject Context; // Referencia al objeto Context
+    [SerializeField] private GameObject Ayuda; // Referencia al objeto Context
     [SerializeField] private GameObject Credits; // Referencia al objeto Credits
-    private bool Contextbool;
+    [SerializeField] private GameObject Dosjugadores; // Referencia al objeto Dosjugadores
+    [SerializeField] private GameObject UI; // Referencia al objeto Ui
+    private bool Ayudabool;
     private bool Creditsbool;
+    private bool Dosjugadoresbool;    
 
     // Creamos una variable estática para almacenar la única instancia
     public static SCManager instance;
@@ -50,15 +53,15 @@ public class SCManager : MonoBehaviour {
   }
     public void ActivarContext()
     {        
-        if (Contextbool == true)
+        if (Ayudabool == true)
         {
-            Context.SetActive(false); // Desactiva el objeto Context
-            Contextbool = false;
+            Ayuda.SetActive(false); // Desactiva el objeto Ayuda
+            Ayudabool = false;
         }
         else
         {
-            Context.SetActive(true); // Activa el objeto Context
-            Contextbool = true;
+            Ayuda.SetActive(true); // Activa el objeto Ayuda
+            Ayudabool = true;
         }        
     }
     public void ActivarCredits()
@@ -73,6 +76,21 @@ public class SCManager : MonoBehaviour {
             Credits.SetActive(true); // Activa el objeto Credits
             Creditsbool = true;
         }        
+    }
+    public void ActivarDosJugadoresLobby()
+    {
+        if (Dosjugadoresbool == true)
+        {
+            Dosjugadores.SetActive(false); // Desactiva el objeto Dosjugadores
+            Dosjugadoresbool = false;
+            UI.SetActive(true); // Activa el objeto UI
+        }
+        else
+        {
+            UI.SetActive(false); // Desactiva el objeto UI
+            Dosjugadores.SetActive(true); // Activa el objeto Dosjugadores
+            Dosjugadoresbool = true;
+        }
     }
 }
 

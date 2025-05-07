@@ -5,19 +5,36 @@ public class TeethFieldManager : MonoBehaviour
 {
     public GameObject toothPrefab;
     public int rows = 2;
-    public int cols = 15;
+    public int cols = 16;
     public int numberOfBombs = 5;
 
-    [Tooltip("Provide spawn points row-major: first 15 for row 0 (top), next 15 for row 1 (bottom)")]
-    public List<Transform> spawnPoints; // Should contain rows * cols = 30
+    [Tooltip("Parent object that contains all spawn points as children.")]
+    public Transform spawnParent;
+
+    private List<Transform> supSpawnPoints = new List<Transform>();
+    private List<Transform> infSpawnPoints = new List<Transform>();
 
     private Tooth[,] grid;
 
     void Start()
     {
-        if (spawnPoints.Count != rows * cols)
+        supSpawnPoints.Clear();
+        infSpawnPoints.Clear();
+
+        foreach (Transform child in spawnParent)
         {
-            Debug.LogError("Spawn point count doesn't match grid size.");
+            if (child.name.Contains("Sup"))
+                supSpawnPoints.Add(child);
+            else if (child.name.Contains("Inf"))
+                infSpawnPoints.Add(child);
+        }
+
+        supSpawnPoints.Sort((a, b) => a.position.x.CompareTo(b.position.x));
+        infSpawnPoints.Sort((a, b) => a.position.x.CompareTo(b.position.x));
+
+        if (supSpawnPoints.Count != cols || infSpawnPoints.Count != cols)
+        {
+            Debug.LogError("Each row must contain exactly " + cols + " spawn points.");
             return;
         }
 
@@ -28,18 +45,21 @@ public class TeethFieldManager : MonoBehaviour
     {
         grid = new Tooth[cols, rows];
 
-        // Instantiate teeth at spawn points
+        // Instantiate Sup (row 0) and Inf (row 1)
         for (int x = 0; x < cols; x++)
         {
-            for (int y = 0; y < rows; y++)
-            {
-                int index = y * cols + x;
-                Transform spawn = spawnPoints[index];
+            Transform supSpawn = supSpawnPoints[x];
+            Transform infSpawn = infSpawnPoints[x];
 
-                GameObject toothObj = Instantiate(toothPrefab, spawn.position, spawn.rotation, spawn);
-                Tooth tooth = toothObj.GetComponent<Tooth>();
-                grid[x, y] = tooth;
-            }
+            // Row 0 - Sup
+            GameObject supToothObj = Instantiate(toothPrefab, supSpawn.position, supSpawn.rotation, supSpawn);
+            Tooth supTooth = supToothObj.GetComponent<Tooth>();
+            grid[x, 0] = supTooth;
+
+            // Row 1 - Inf
+            GameObject infToothObj = Instantiate(toothPrefab, infSpawn.position, infSpawn.rotation, infSpawn);
+            Tooth infTooth = infToothObj.GetComponent<Tooth>();
+            grid[x, 1] = infTooth;
         }
 
         // Place bombs randomly

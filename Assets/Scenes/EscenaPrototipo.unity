@@ -2084,39 +2084,8 @@ MonoBehaviour:
   rows: 2
   cols: 16
   numberOfBombs: 5
-  spawnPoints:
-  - {fileID: 1213067594}
-  - {fileID: 571367217}
-  - {fileID: 203458219}
-  - {fileID: 620558215}
-  - {fileID: 1819335484}
-  - {fileID: 960690263}
-  - {fileID: 1157464355}
-  - {fileID: 1055839575}
-  - {fileID: 251356055}
-  - {fileID: 987292489}
-  - {fileID: 335360644}
-  - {fileID: 460683790}
-  - {fileID: 768813190}
-  - {fileID: 297211772}
-  - {fileID: 1620906924}
-  - {fileID: 1543223388}
-  - {fileID: 1307537398}
-  - {fileID: 875633982}
-  - {fileID: 1799574289}
-  - {fileID: 1716085450}
-  - {fileID: 544947102}
-  - {fileID: 513287868}
-  - {fileID: 450030251}
-  - {fileID: 465283555}
-  - {fileID: 968946615}
-  - {fileID: 46191051}
-  - {fileID: 1172869144}
-  - {fileID: 1350456569}
-  - {fileID: 137785790}
-  - {fileID: 803018311}
-  - {fileID: 1689134510}
-  - {fileID: 1639135038}
+  spawnParent: {fileID: 1868431186}
+  spawnPoints: []
 --- !u!4 &1411107853
 Transform:
   m_ObjectHideFlags: 0
@@ -3106,6 +3075,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
+--- !u!4 &1868431186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
+  m_PrefabInstance: {fileID: 1868431185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2060097553
 PrefabInstance:
   m_ObjectHideFlags: 0

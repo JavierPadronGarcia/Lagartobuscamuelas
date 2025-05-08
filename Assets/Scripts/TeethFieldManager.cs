@@ -105,7 +105,6 @@ public class TeethFieldManager : MonoBehaviour
                 }
 
                 diente.adjacentMines = mines;
-                diente.mineText.text = mines.ToString();
             }
         }
 

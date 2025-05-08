@@ -1,9 +1,11 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
 public class Tooth : MonoBehaviour
 {
-    public TextMeshProUGUI mineText;
 
     public bool isMine = false;
     public bool isRevealed = false;
@@ -16,11 +18,24 @@ public class Tooth : MonoBehaviour
 
     private Renderer rend;
 
+    [SerializeField] Transform NumberSpawnPoint;
+    [SerializeField] List<GameObject> NumberPrefabs;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
         if (rend) rend.material = defaultMaterial;
-        if (isSup) mineText.gameObject.transform.localScale = new Vector3(1, -1, 1);
+        GameObject spawnedNumber = null;
+        if (!isMine)
+        {
+            spawnedNumber = Instantiate(NumberPrefabs[adjacentMines], NumberSpawnPoint);
+        }
+        if (spawnedNumber != null && isSup)
+        {
+            spawnedNumber.transform.Rotate(new Vector3(0, 0, 180));
+            //spawnedNumber.transform.localPosition = new Vector3(spawnedNumber.transform.localPosition.x, -1, spawnedNumber.transform.localPosition.z);
+        };
+
     }
 
     public void Reveal()

@@ -18,6 +18,9 @@ public class SCManager : MonoBehaviour {
     private bool Creditsbool;
     private bool Dosjugadoresbool;
     public Animator animatorAyuda;
+    public Animator animatorCreditos;
+    public Animator animatorDosjugadores;
+    public Animator animatorIC;
 
     // Creamos una variable estática para almacenar la única instancia
     public static SCManager instance;
@@ -57,28 +60,27 @@ public class SCManager : MonoBehaviour {
     {        
         if (Ayudabool == true)
         {
-            animatorAyuda.Play("MenuAyudaOut");
-            StartCoroutine(EjecutarConEspera());
-            Ayuda.SetActive(false); // Desactiva el objeto Ayuda
+            animatorAyuda.SetTrigger("out");
             Ayudabool = false;
         }
         else
         {
-            animatorAyuda.Play("MenuAyuda");
-            Ayuda.SetActive(true); // Activa el objeto Ayuda
-            Ayudabool = true;
+            Ayuda.SetActive(true); // Activa el objeto UI
+            animatorAyuda.SetTrigger("in");
+            Ayudabool = true;            
         }        
     }
     public void ActivarCredits()
     {
         if (Creditsbool == true)
         {
-            Credits.SetActive(false); // Desactiva el objeto Credits
+            animatorCreditos.SetTrigger("out");
             Creditsbool = false;
         }
         else
         {
-            Credits.SetActive(true); // Activa el objeto Credits
+            Credits.SetActive(true); // Activa el objeto UI
+            animatorCreditos.SetTrigger("in");
             Creditsbool = true;
         }        
     }
@@ -86,20 +88,25 @@ public class SCManager : MonoBehaviour {
     {
         if (Dosjugadoresbool == true)
         {
-            Dosjugadores.SetActive(false); // Desactiva el objeto Dosjugadores
+            animatorDosjugadores.SetTrigger("out");
             Dosjugadoresbool = false;
-            UI.SetActive(true); // Activa el objeto UI
+            StartCoroutine(EjecutarConEspera());
+            //UI.SetActive(true); // Activa el objeto UI
         }
         else
         {
+            //animatorIC.SetTrigger("in");
             UI.SetActive(false); // Desactiva el objeto UI
-            Dosjugadores.SetActive(true); // Activa el objeto Dosjugadores
+            Dosjugadores.SetActive(true); // Activa el objeto UI
+            animatorDosjugadores.SetTrigger("in");
             Dosjugadoresbool = true;
         }
     }
     IEnumerator EjecutarConEspera()
     {        
-        yield return new WaitForSeconds(0.2f); // Espera 0.2 segundos        
+        yield return new WaitForSeconds(0.7f); // Espera 0.5 segundos
+        Dosjugadores.SetActive(false);
+        UI.SetActive(true); // Activa el objeto UI                      
     }
 }
 

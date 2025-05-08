@@ -90,15 +90,14 @@ public class SCManager : MonoBehaviour {
         {
             animatorDosjugadores.SetTrigger("out");
             Dosjugadoresbool = false;
-            StartCoroutine(EjecutarConEspera());
-            //UI.SetActive(true); // Activa el objeto UI
+            StartCoroutine(EjecutarConEspera());            
         }
         else
         {
-            //animatorIC.SetTrigger("in");
-            UI.SetActive(false); // Desactiva el objeto UI
-            Dosjugadores.SetActive(true); // Activa el objeto UI
-            animatorDosjugadores.SetTrigger("in");
+            //UI.SetActive(false); // Desactiva el objeto UI
+            animatorIC.SetTrigger("in");
+            StartCoroutine(EjecutarConEspera2());
+            //UI.SetActive(false); // Desactiva el objeto UI            
             Dosjugadoresbool = true;
         }
     }
@@ -106,7 +105,20 @@ public class SCManager : MonoBehaviour {
     {        
         yield return new WaitForSeconds(0.7f); // Espera 0.5 segundos
         Dosjugadores.SetActive(false);
-        UI.SetActive(true); // Activa el objeto UI                      
+        UI.SetActive(true);
+        animatorIC.SetTrigger("out");
+        //UI.SetActive(true); // Activa el objeto UI                      
+    }
+    IEnumerator EjecutarConEspera2()
+    {
+        yield return new WaitForSeconds(0.9f); // Espera 0.5 segundos
+        Dosjugadores.SetActive(true); // Activa el objeto UI
+        animatorDosjugadores.SetTrigger("in");
+        UI.SetActive(false);
+        //Dosjugadores.SetActive(false);
+        //UI.SetActive(true);
+        //animatorIC.SetTrigger("out");
+        //UI.SetActive(true); // Activa el objeto UI                      
     }
 }
 

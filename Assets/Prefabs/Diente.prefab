@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -162,17 +162,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5364256230836774377}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.025}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2249999}
   m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 550335825950326675}
   m_Father: {fileID: 4937364292229687609}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0039, y: 0.035}
+  m_AnchoredPosition: {x: -0.0039, y: 0.03499985}
   m_SizeDelta: {x: 465.1447, y: 713.841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &186298990737177767
@@ -284,8 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae8d7dc7467aa74b98c68dbdb288cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mineText: {fileID: 3820957811652753}
   isMine: 0
   isRevealed: 0
+  isSup: 0
   adjacentMines: 0
   defaultMaterial: {fileID: 0}
   revealedMaterial: {fileID: 0}

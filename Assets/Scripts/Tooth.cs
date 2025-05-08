@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 public class Tooth : MonoBehaviour
 {
+    public TextMeshProUGUI mineText;
+
     public bool isMine = false;
     public bool isRevealed = false;
+    public bool isSup = false;
     public int adjacentMines = 0;
 
     public Material defaultMaterial;
@@ -16,6 +20,7 @@ public class Tooth : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         if (rend) rend.material = defaultMaterial;
+        if (isSup) mineText.gameObject.transform.localScale = new Vector3(1, -1, 1);
     }
 
     public void Reveal()

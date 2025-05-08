@@ -29,9 +29,6 @@ public class TeethFieldManager : MonoBehaviour
                 infSpawnPoints.Add(child);
         }
 
-        supSpawnPoints.Sort((a, b) => a.position.x.CompareTo(b.position.x));
-        infSpawnPoints.Sort((a, b) => a.position.x.CompareTo(b.position.x));
-
         if (supSpawnPoints.Count != cols || infSpawnPoints.Count != cols)
         {
             Debug.LogError("Each row must contain exactly " + cols + " spawn points.");
@@ -54,6 +51,7 @@ public class TeethFieldManager : MonoBehaviour
             // Row 0 - Sup
             GameObject supToothObj = Instantiate(toothPrefab, supSpawn.position, supSpawn.rotation, supSpawn);
             Tooth supTooth = supToothObj.GetComponent<Tooth>();
+            supTooth.isSup = true;
             grid[x, 0] = supTooth;
 
             // Row 1 - Inf
@@ -76,40 +74,44 @@ public class TeethFieldManager : MonoBehaviour
             availablePositions.RemoveAt(index);
         }
 
-        // Compute adjacency
-        for (int x = 0; x < cols; x++)
+        for (int y = 0; y < rows; y++) // sup - inf
         {
-            for (int y = 0; y < rows; y++)
+            for (int x = 0; x < cols; x++) // diente a diente
             {
-                if (grid[x, y].isMine)
-                    continue;
+                Tooth diente = grid[x, y];
 
-                int count = 0;
-                foreach (Vector2Int dir in GetDirections())
+                if (diente.isMine) continue;
+
+                int mines = 0;
+
+                // comprobar minas juntas
+                for (int dy = -1; dy <= 1; dy++)
                 {
-                    int nx = x + dir.x;
-                    int ny = y + dir.y;
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        if (dx == 0 && dy == 0) continue;
 
-                    if (IsValid(nx, ny) && grid[nx, ny].isMine)
-                        count++;
+                        int nx = x + dx;
+                        int ny = y + dy;
+
+                        if (nx >= 0 && nx < cols && ny >= 0 && ny < rows)
+                        {
+                            if (grid[nx, ny].isMine)
+                            {
+                                mines++;
+                            }
+                        }
+                    }
                 }
-                grid[x, y].adjacentMines = count;
+
+                diente.adjacentMines = mines;
+                diente.mineText.text = mines.ToString();
             }
         }
-    }
 
-    List<Vector2Int> GetDirections()
-    {
-        return new List<Vector2Int>
-        {
-            new Vector2Int(-1, -1), new Vector2Int(0, -1), new Vector2Int(1, -1),
-            new Vector2Int(-1,  0),                    new Vector2Int(1,  0),
-            new Vector2Int(-1,  1), new Vector2Int(0,  1), new Vector2Int(1,  1)
-        };
-    }
+        // x x x x x x x x x x x x
+        // x x x x x x x x x x x x
 
-    bool IsValid(int x, int y)
-    {
-        return x >= 0 && x < cols && y >= 0 && y < rows;
+
     }
 }

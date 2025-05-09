@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 411094715}
   - component: {fileID: 411094714}
   m_Layer: 0
-  m_Name: XR Interaction Manager (1)
+  m_Name: XR Interaction Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_AnchorMin.x
@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_SizeDelta.x
@@ -816,11 +816,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 775
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326224632397, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -849,6 +849,10 @@ PrefabInstance:
     - target: {fileID: 8747907326643813623, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_Name
       value: Dosjugadores
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747907326643813623, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326643813625, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_Text
@@ -1222,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4015128326712939855, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_Name
-      value: UI Sample
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 4015128326712939855, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_IsActive
@@ -1948,6 +1952,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1726642578}
     m_Modifications:
+    - target: {fileID: 1464007901507148096, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_Text
+      value: "\nProyecto VR desarrollado por:\n\nAlejandro Dorta\nCarlos Su\xE1rez\nJavier
+        Padr\xF3n\nJosu\xE9 Santana\n\nM\xFAsica por:\n\n-------------------"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464007901507148096, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464007901507148096, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088100212386217528, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_Name
+      value: CreditosTexto
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310927192967306790, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310927193962779444, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_Name
+      value: TituloCreditos
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310927193962779450, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
+      propertyPath: m_Text
+      value: Creditos
+      objectReference: {fileID: 0}
     - target: {fileID: 8310927194012853641, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
       propertyPath: m_Name
       value: Credits Variant
@@ -1986,7 +2019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8310927194012853646, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 350
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8310927194012853646, guid: 18765ffc7e33c094384a0f8206b4ab9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2392,11 +2425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326643813623, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_Name
-      value: Context
+      value: TituloAyuda
       objectReference: {fileID: 0}
     - target: {fileID: 8747907326643813625, guid: 0cbc0856f0fb8d84a81be5dea463c369, type: 3}
       propertyPath: m_Text
-      value: Context
+      value: Ayuda
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2469,7 +2502,7 @@ GameObject:
   - component: {fileID: 1497447220}
   - component: {fileID: 1497447219}
   m_Layer: 5
-  m_Name: ContextText
+  m_Name: AyudaTexto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2527,7 +2560,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Contexto del juego
+  m_Text: Ayuda para el jugador
 --- !u!222 &1497447220
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3484,7 +3517,7 @@ GameObject:
   - component: {fileID: 2046687903}
   - component: {fileID: 2046687902}
   m_Layer: 5
-  m_Name: DosjugadoresText
+  m_Name: DosjugadoresTexto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3563,6 +3596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SCManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5233411077918623101, guid: 429c844d73a5e9a46b40cc82da8c8fe3, type: 3}
+      propertyPath: IC
+      value: 
+      objectReference: {fileID: 1709042768}
     - target: {fileID: 5233411077918623101, guid: 429c844d73a5e9a46b40cc82da8c8fe3, type: 3}
       propertyPath: UI
       value: 

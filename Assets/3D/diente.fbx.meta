@@ -3,7 +3,12 @@ guid: b62488360b7a0f2418e2a1712ea3ed01
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DienteMaterial
+    second: {fileID: 2100000, guid: 2a2c27be67dda5c488943bbdfb415509, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

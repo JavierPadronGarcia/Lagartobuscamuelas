@@ -3025,7 +3025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: EscenaPrototipoVR_J
+      value: EscenaPrototipoVR
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

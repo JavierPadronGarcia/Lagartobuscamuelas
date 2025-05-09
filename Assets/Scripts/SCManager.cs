@@ -13,7 +13,7 @@ public class SCManager : MonoBehaviour {
     [SerializeField] private GameObject Ayuda; // Referencia al objeto Context
     [SerializeField] private GameObject Credits; // Referencia al objeto Credits
     [SerializeField] private GameObject Dosjugadores; // Referencia al objeto Dosjugadores
-    [SerializeField] private GameObject UI; // Referencia al objeto Ui
+    [SerializeField] private GameObject IC; // Referencia al objeto Ui
     private bool Ayudabool;
     private bool Creditsbool;
     private bool Dosjugadoresbool;
@@ -23,11 +23,11 @@ public class SCManager : MonoBehaviour {
     public Animator animatorIC;
 
     // Creamos una variable estática para almacenar la única instancia
-    public static SCManager instance;
-  
-  // Método Awake que se llama al inicio antes de que se active el objeto. Útil para inicializar
-  // variables u objetos que serán llamados por otros scripts (game managers, clases singleton, etc).
-  private void Awake() {
+    public static SCManager instance;   
+
+    // Método Awake que se llama al inicio antes de que se active el objeto. Útil para inicializar
+    // variables u objetos que serán llamados por otros scripts (game managers, clases singleton, etc).
+    private void Awake() {
     
     // ----------------------------------------------------------------
     // AQUÍ ES DONDE SE DEFINE EL COMPORTAMIENTO DE LA CLASE SINGLETON
@@ -93,11 +93,9 @@ public class SCManager : MonoBehaviour {
             StartCoroutine(EjecutarConEspera());            
         }
         else
-        {
-            //UI.SetActive(false); // Desactiva el objeto UI
+        {            
             animatorIC.SetTrigger("in");
-            StartCoroutine(EjecutarConEspera2());
-            //UI.SetActive(false); // Desactiva el objeto UI            
+            StartCoroutine(EjecutarConEspera2());                       
             Dosjugadoresbool = true;
         }
     }
@@ -105,20 +103,15 @@ public class SCManager : MonoBehaviour {
     {        
         yield return new WaitForSeconds(0.7f); // Espera 0.5 segundos
         Dosjugadores.SetActive(false);
-        UI.SetActive(true);
-        animatorIC.SetTrigger("out");
-        //UI.SetActive(true); // Activa el objeto UI                      
+        IC.SetActive(true);
+        animatorIC.Play("MenuICOut");                            
     }
     IEnumerator EjecutarConEspera2()
     {
         yield return new WaitForSeconds(0.9f); // Espera 0.5 segundos
         Dosjugadores.SetActive(true); // Activa el objeto UI
         animatorDosjugadores.SetTrigger("in");
-        UI.SetActive(false);
-        //Dosjugadores.SetActive(false);
-        //UI.SetActive(true);
-        //animatorIC.SetTrigger("out");
-        //UI.SetActive(true); // Activa el objeto UI                      
+        IC.SetActive(false);                            
     }
 }
 

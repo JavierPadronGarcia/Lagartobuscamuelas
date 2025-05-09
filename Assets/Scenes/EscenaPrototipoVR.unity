@@ -1586,7 +1586,7 @@ MonoBehaviour:
   minesLeftText: {fileID: 1551036642}
   healthText: {fileID: 566213486}
   hintsText: {fileID: 1673701156}
-  fieldManager: {fileID: 0}
+  fieldManager: {fileID: 2070696973}
 --- !u!4 &478864310
 Transform:
   m_ObjectHideFlags: 0

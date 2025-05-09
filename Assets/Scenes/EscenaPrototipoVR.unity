@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6712369434086058868, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.94
+      value: 6.826
       objectReference: {fileID: 0}
     - target: {fileID: 6712369434086058868, guid: 7851a4b7a848ef64fb44fd9f1be67ec6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1525,11 +1525,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 433617556}
   m_SourcePrefab: {fileID: 100100000, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
---- !u!1 &433617554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4371530511940279417, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
-  m_PrefabInstance: {fileID: 433617553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433617555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
@@ -1541,7 +1536,7 @@ MeshCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433617554}
+  m_GameObject: {fileID: 1723350416}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2483,6 +2478,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 235}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1723350416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4371530511940279417, guid: 90e642e1684a1ff49ba7bc934bf05ebf, type: 3}
+  m_PrefabInstance: {fileID: 433617553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1738589983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,7 +2831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.252
+      value: 5.916
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2887,8 +2887,8 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1943127372}
   m_SourcePrefab: {fileID: 100100000, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
---- !u!4 &1835940719 stripped
-Transform:
+--- !u!224 &1835940719 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   m_PrefabInstance: {fileID: 1835940718}
   m_PrefabAsset: {fileID: 0}

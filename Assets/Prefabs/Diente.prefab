@@ -156,6 +156,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b62488360b7a0f2418e2a1712ea3ed01, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e2ed1a5b8125b4f45b56ef3e2473e007, type: 2}
     - target: {fileID: 919132149155446097, guid: b62488360b7a0f2418e2a1712ea3ed01, type: 3}
       propertyPath: m_Name
       value: diente
@@ -266,7 +270,7 @@ MonoBehaviour:
     zAxis: 1
     detectFloatingFragments: 0
     asynchronous: 0
-    insideMaterial: {fileID: 2100000, guid: 2a2c27be67dda5c488943bbdfb415509, type: 2}
+    insideMaterial: {fileID: 2100000, guid: e2ed1a5b8125b4f45b56ef3e2473e007, type: 2}
     textureScale: {x: 1, y: 1}
     textureOffset: {x: 0, y: 0}
   refractureOptions:

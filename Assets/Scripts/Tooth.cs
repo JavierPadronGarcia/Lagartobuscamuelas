@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class Tooth : MonoBehaviour
@@ -17,6 +18,7 @@ public class Tooth : MonoBehaviour
     public Material mineMaterial;
 
     private Renderer rend;
+    public HintHighlight highlight;
 
     [SerializeField] Transform NumberSpawnPoint;
     [SerializeField] List<GameObject> NumberPrefabs;
@@ -25,6 +27,8 @@ public class Tooth : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         if (rend) rend.material = defaultMaterial;
+        if (highlight == null)
+            highlight = GetComponentInChildren<HintHighlight>();
         GameObject spawnedNumber = null;
         if (!isMine)
         {

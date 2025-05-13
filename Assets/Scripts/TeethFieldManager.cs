@@ -15,6 +15,7 @@ public class TeethFieldManager : MonoBehaviour
     private List<Transform> infSpawnPoints = new List<Transform>();
 
     private Tooth[,] grid;
+    public List<Tooth> allTeeth = new List<Tooth>();
 
     void Start()
     {
@@ -53,11 +54,13 @@ public class TeethFieldManager : MonoBehaviour
             Tooth supTooth = supToothObj.GetComponent<Tooth>();
             supTooth.isSup = true;
             grid[x, 0] = supTooth;
+            allTeeth.Add(supTooth);
 
             // Row 1 - Inf
             GameObject infToothObj = Instantiate(toothPrefab, infSpawn.position, infSpawn.rotation, infSpawn);
             Tooth infTooth = infToothObj.GetComponent<Tooth>();
             grid[x, 1] = infTooth;
+            allTeeth.Add(infTooth);
         }
 
         // Place bombs randomly

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
 
             UpdateTimerUI();
         }
+        // Pistas con P
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            UseHint();
+        }
     }
 
     void UpdateUI()
@@ -90,11 +96,28 @@ public class GameManager : MonoBehaviour
 
     public void UseHint()
     {
-        if (hints > 0)
+        if (hints <= 0) return;
+
+        // Get all unrevealed, non-mine teeth
+        List<Tooth> validTeeth = new List<Tooth>();
+
+        foreach (Tooth t in fieldManager.allTeeth)
         {
-            hints--;
-            hintsText.text = "Pistas: " + hints;
-            // Pistas
+            if (!t.isMine && t.highlight != null)
+                validTeeth.Add(t);
         }
+
+        if (validTeeth.Count == 0)
+        {
+            Debug.Log("No valid teeth to highlight.");
+            return;
+        }
+
+        // Pick one at random and highlight it
+        Tooth chosen = validTeeth[Random.Range(0, validTeeth.Count)];
+        chosen.highlight.UseHint();
+
+        hints--;
+        hintsText.text = "Pistas: " + hints;
     }
 }

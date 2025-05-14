@@ -23,6 +23,8 @@ public class Tooth : MonoBehaviour
     [SerializeField] Transform NumberSpawnPoint;
     [SerializeField] List<GameObject> NumberPrefabs;
     public GameObject currentFlag;
+    [SerializeField] private Transform flagSpawnPoint;
+    public Transform FlagSpawnPoint => flagSpawnPoint;
 
     void Start()
     {
@@ -84,6 +86,18 @@ public class Tooth : MonoBehaviour
     }
     public void SetFlag(GameObject flag)
     {
+        if (flagSpawnPoint != null)
+        {
+            flag.transform.SetParent(flagSpawnPoint);
+            flag.transform.localPosition = Vector3.zero;
+            flag.transform.localRotation = Quaternion.identity;
+        }
+        else
+        {
+            Debug.LogWarning("Flag spawn point not assigned on " + gameObject.name);
+            flag.transform.position = transform.position;
+        }
+
         currentFlag = flag;
     }
 
@@ -91,6 +105,7 @@ public class Tooth : MonoBehaviour
     {
         if (currentFlag != null)
         {
+            currentFlag.transform.SetParent(null);
             currentFlag.SetActive(false);
             currentFlag = null;
         }

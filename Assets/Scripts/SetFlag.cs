@@ -53,6 +53,15 @@ public class SetFlag : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0)) // Left click
+        {
+            TrySetOrRemoveFlag();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T)) // Press 'T' to toggle mode
+        {
+            ToggleMode();
+        }
         if (!isHeld)
         {
             return;
@@ -86,10 +95,16 @@ public class SetFlag : MonoBehaviour
 
     void TrySetOrRemoveFlag()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayDistance, toothLayer))
+        Debug.Log("TrySetOrRemoveFlag called");
+
+        Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
+        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.green, 1f);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
             Debug.Log($"Raycast hit: {hit.collider.name}");
-            Tooth tooth = hit.collider.GetComponent<Tooth>();
+
+            Tooth tooth = hit.collider.GetComponentInParent<Tooth>();
             if (tooth != null)
             {
                 Debug.Log("Tooth component found!");
@@ -103,13 +118,23 @@ public class SetFlag : MonoBehaviour
                     GameObject flag = selectedPool.GetPooledObject();
                     if (flag != null)
                     {
-                        Debug.Log("Spawning flag at: " + hit.point);
-                        flag.transform.position = hit.point;
-                        flag.transform.rotation = Quaternion.LookRotation(hit.normal);
-                        tooth.SetFlag(flag);
+                        tooth.SetFlag(flag); // Å© positioning is now handled by Tooth
+                        Debug.Log("Flag set on tooth!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No flag available in pool!");
                     }
                 }
             }
+            else
+            {
+                Debug.LogWarning("Raycast hit something, but no Tooth component was found.");
+            }
+        }
+        else
+        {
+            Debug.Log("Raycast did not hit anything.");
         }
     }
 

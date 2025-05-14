@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CanvasController : MonoBehaviour
 {
@@ -8,20 +9,27 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject Credits; // Referencia al objeto Credits
     [SerializeField] private GameObject Dosjugadores; // Referencia al objeto Dosjugadores
     [SerializeField] private GameObject IC; // Referencia al objeto Ui
+    [SerializeField] private PlayableDirector timelineDirector; // Referencia al Timeline
+
     private bool Ayudabool;
     private bool Creditsbool;
     private bool Dosjugadoresbool;
+
     public Animator animatorAyuda;
     public Animator animatorCreditos;
     public Animator animatorDosjugadores;
     public Animator animatorIC;
 
+    private void Start()
+    {
+        timelineDirector.Stop();
+    }
     public void ExitGame()
     {
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
-               Application.Quit();
+        Application.Quit();
 #endif
     }
 
@@ -86,4 +94,17 @@ public class CanvasController : MonoBehaviour
         animatorDosjugadores.SetTrigger("in");
         IC.SetActive(false);
     }
+
+    IEnumerator EjecutarConEspera3()
+    {
+        yield return new WaitForSeconds(0.9f); // Espera 0.5 segundos
+        timelineDirector.Play();
+    }
+
+    public void EjecutarAnimacionYTimeline()
+    {
+        animatorIC.SetTrigger("in");
+        StartCoroutine(EjecutarConEspera3());
+    }
 }
+

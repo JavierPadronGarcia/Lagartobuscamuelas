@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -13,6 +15,7 @@ public class SetFlag : MonoBehaviour
     public FlagPool yellowFlagPool;
 
     [Header("Raycast")]
+    public Transform rayOrigin;
     public float rayDistance = 5f;
     public LayerMask toothLayer;
 
@@ -23,6 +26,8 @@ public class SetFlag : MonoBehaviour
 
     private XRGrabInteractable grabInteractable;
     private XRBaseInteractor interactorHoldingGun;
+    private InputAction toggleAction;
+
 
     private bool isHeld => interactorHoldingGun != null;
 
@@ -49,7 +54,13 @@ public class SetFlag : MonoBehaviour
     void Update()
     {
         if (!isHeld)
+        {
             return;
+        }
+        else
+        {
+            Debug.DrawRay(rayOrigin.position, rayOrigin.forward * rayDistance, Color.red);
+        }
     }
 
     public void OnTriggerPressed()
@@ -77,9 +88,11 @@ public class SetFlag : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayDistance, toothLayer))
         {
+            Debug.Log($"Raycast hit: {hit.collider.name}");
             Tooth tooth = hit.collider.GetComponent<Tooth>();
             if (tooth != null)
             {
+                Debug.Log("Tooth component found!");
                 if (tooth.HasFlag())
                 {
                     tooth.RemoveFlag();
@@ -90,6 +103,7 @@ public class SetFlag : MonoBehaviour
                     GameObject flag = selectedPool.GetPooledObject();
                     if (flag != null)
                     {
+                        Debug.Log("Spawning flag at: " + hit.point);
                         flag.transform.position = hit.point;
                         flag.transform.rotation = Quaternion.LookRotation(hit.normal);
                         tooth.SetFlag(flag);

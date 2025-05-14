@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class HintHighlight : MonoBehaviour
 {
-    public int hintCount = 3;                      // Number of hints available
-    public float glowDuration = 30f;                // Glow time in seconds
-    public Color glowColor = Color.cyan;           // Emission glow color
-    public float glowIntensity = 3f;               // Emission brightness
-    public KeyCode testKey = KeyCode.P;            // For testing in editor
+    public float glowDuration = 30f;
+    public Color glowColor = Color.yellow;
+    public float glowIntensity = 3f;
+    public KeyCode testKey = KeyCode.P;
+    public float maxGlowIntensity = 0f;
+    public float minGlowIntensity = -9f;
+    public float pulseSpeed = 2f;
 
     private Renderer rend;
     private Material mat;
@@ -16,54 +18,57 @@ public class HintHighlight : MonoBehaviour
 
     private Light pointLight;
 
-    void Start()
+    private void Start()
     {
         rend = GetComponent<Renderer>();
         mat = rend.material;
-        originalEmission = mat.GetColor("_EmissionColor");
-
-        // Get the Point Light component from this object or its children
-        pointLight = GetComponentInChildren<Light>();
-        if (pointLight != null)
-            pointLight.enabled = false;
-
-        DisableEmission(); // Make sure emission starts off
+        DisableEmission();
     }
 
     public void UseHint()
     {
-        //if (hintCount > 0 && !isGlowing)
-        //{
-        //    hintCount--;
-        //    StartCoroutine(GlowEffect());
-        //}
         if (isGlowing) return;
-
-        isGlowing = true;
-        EnableEmission(glowColor * glowIntensity);
-
-        if (pointLight != null)
-            pointLight.enabled = true;
+        StartCoroutine(GlowEffect());
     }
 
-    //private IEnumerator GlowEffect()
+    //public void UseHint()
     //{
-    //    isGlowing = true;
+    //    //if (hintCount > 0 && !isGlowing)
+    //    //{
+    //    //    hintCount--;
+    //    //    StartCoroutine(GlowEffect());
+    //    //}
+    //    if (isGlowing) return;
 
-    //    // Enable emission and light
-    //    EnableEmission(glowColor * glowIntensity);
+    //    isGlowing = true;
+    //    //EnableEmission(glowColor * glowIntensity);
+
+    //    StartCoroutine(GlowEffect());
+
     //    if (pointLight != null)
     //        pointLight.enabled = true;
-
-    //    yield return new WaitForSeconds(glowDuration);
-
-    //    // Disable emission and light
-    //    DisableEmission();
-    //    if (pointLight != null)
-    //        pointLight.enabled = false;
-
-    //    isGlowing = false;
     //}
+
+    private IEnumerator GlowEffect()
+    {
+        isGlowing = true;
+
+        float elapsed = 0f;
+
+        while (elapsed < glowDuration)
+        {
+            // PingPong entre 0 y 1
+            float t = Mathf.PingPong(Time.time * pulseSpeed, 1f);
+            float intensity = Mathf.Lerp(minGlowIntensity, maxGlowIntensity, t);
+            EnableEmission(glowColor * intensity);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        DisableEmission();
+        isGlowing = false;
+    }
 
     private void EnableEmission(Color emissionColor)
     {

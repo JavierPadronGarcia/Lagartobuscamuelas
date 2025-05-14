@@ -1,42 +1,115 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class SetFlag : MonoBehaviour
 {
-    [SerializeField] private FlagPool yellowFlagPool;
-    [SerializeField] private FlagPool redFlagPool;
+    public FlagType currentMode = FlagType.Yellow;
+
+    [Header("Pools")]
+    public FlagPool redFlagPool;
+    public FlagPool yellowFlagPool;
+
+    [Header("Raycast")]
+    public float rayDistance = 5f;
+    public LayerMask toothLayer;
+
+    [Header("Screen Material")]
+    public Material redFlagMaterial;
+    public Material yellowFlagMaterial;
+    public Renderer screenRenderer;
+
+    private XRGrabInteractable grabInteractable;
+    private XRBaseInteractor interactorHoldingGun;
+
+    private bool isHeld => interactorHoldingGun != null;
+
+    public enum FlagType
+    {
+        Red,
+        Yellow
+    }
+
+    void Awake()
+    {
+        grabInteractable = GetComponent<XRGrabInteractable>();
+
+        grabInteractable.selectEntered.AddListener(OnGrab);
+        grabInteractable.selectExited.AddListener(OnRelease);
+    }
+
+    void OnDestroy()
+    {
+        grabInteractable.selectEntered.RemoveListener(OnGrab);
+        grabInteractable.selectExited.RemoveListener(OnRelease);
+    }
 
     void Update()
     {
-        // Z: Spawn Yellow Flag
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (!isHeld)
+            return;
+    }
+
+    public void OnTriggerPressed()
+    {
+        if (interactorHoldingGun != null)
+            TrySetOrRemoveFlag();
+    }
+
+    public void OnTogglePressed()
+    {
+        if (interactorHoldingGun != null)
+            ToggleMode();
+    }
+    void OnGrab(SelectEnterEventArgs args)
+    {
+        interactorHoldingGun = args.interactorObject as XRBaseInteractor;
+    }
+
+    void OnRelease(SelectExitEventArgs args)
+    {
+        interactorHoldingGun = null;
+    }
+
+    void TrySetOrRemoveFlag()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayDistance, toothLayer))
         {
-            GameObject flag = yellowFlagPool.GetPooledObject();
-            if (flag != null)
+            Tooth tooth = hit.collider.GetComponent<Tooth>();
+            if (tooth != null)
             {
-                flag.transform.position = new Vector3(Random.Range(-5, 5), 0, 0);
+                if (tooth.HasFlag())
+                {
+                    tooth.RemoveFlag();
+                }
+                else
+                {
+                    FlagPool selectedPool = currentMode == FlagType.Red ? redFlagPool : yellowFlagPool;
+                    GameObject flag = selectedPool.GetPooledObject();
+                    if (flag != null)
+                    {
+                        flag.transform.position = hit.point;
+                        flag.transform.rotation = Quaternion.LookRotation(hit.normal);
+                        tooth.SetFlag(flag);
+                    }
+                }
             }
         }
+    }
 
-        // X: Disable last Yellow Flag
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            yellowFlagPool.ReleaseLastActive();
-        }
+    public void ToggleMode()
+    {
+        currentMode = currentMode == FlagType.Red ? FlagType.Yellow : FlagType.Red;
+        UpdateScreenMaterial();
+    }
 
-        // N: Spawn Red Flag
-        if (Input.GetKeyDown(KeyCode.N))
+    void UpdateScreenMaterial()
+    {
+        if (screenRenderer != null)
         {
-            GameObject flag = redFlagPool.GetPooledObject();
-            if (flag != null)
-            {
-                flag.transform.position = new Vector3(Random.Range(-5, 5), 0, 5);
-            }
-        }
-
-        // M: Disable last Red Flag
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            redFlagPool.ReleaseLastActive();
+            screenRenderer.material = currentMode == FlagType.Red ? redFlagMaterial : yellowFlagMaterial;
         }
     }
 }

@@ -22,6 +22,7 @@ public class Tooth : MonoBehaviour
 
     [SerializeField] Transform NumberSpawnPoint;
     [SerializeField] List<GameObject> NumberPrefabs;
+    public GameObject currentFlag;
 
     void Start()
     {
@@ -80,5 +81,23 @@ public class Tooth : MonoBehaviour
                 t.Reveal();
             }
         }
+    }
+    public void SetFlag(GameObject flag)
+    {
+        currentFlag = flag;
+    }
+
+    public void RemoveFlag()
+    {
+        if (currentFlag != null)
+        {
+            currentFlag.SetActive(false);
+            currentFlag = null;
+        }
+    }
+
+    public bool HasFlag()
+    {
+        return currentFlag != null;
     }
 }

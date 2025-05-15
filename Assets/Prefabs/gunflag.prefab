@@ -129,7 +129,7 @@ PrefabInstance:
     - target: {fileID: -1526509560930016547, guid: 0c1fba4c6cb1f3a429d1404c4a12b046, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a1955d9a423d0b04481814d1b2b57986, type: 2}
+      objectReference: {fileID: 2100000, guid: 8cd1fd643248e6f4ea61660f49581d92, type: 2}
     - target: {fileID: 919132149155446097, guid: 0c1fba4c6cb1f3a429d1404c4a12b046, type: 3}
       propertyPath: m_Name
       value: gunflag
@@ -387,12 +387,10 @@ MonoBehaviour:
   yellowFlagPool: {fileID: 0}
   rayOrigin: {fileID: 6767469697824242436}
   rayDistance: 5
-  toothLayer:
-    serializedVersion: 2
-    m_Bits: 0
   redFlagMaterial: {fileID: 2100000, guid: 1b44ed22a09912b4aa250ab03d446bc3, type: 2}
   yellowFlagMaterial: {fileID: 2100000, guid: 8cd1fd643248e6f4ea61660f49581d92, type: 2}
   screenRenderer: {fileID: 6449123950052704594}
+  toggleModeAction: {fileID: 1142121884088708580, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!23 &6449123950052704594 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1526509560930016547, guid: 0c1fba4c6cb1f3a429d1404c4a12b046, type: 3}

@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class GameManager : MonoBehaviour
     [Header("Referencias")]
     public TeethFieldManager fieldManager;
 
+    [Header("Input Action")]
+    public InputActionReference highlightAction;
+
     void Start()
     {
         if (fieldManager == null)
@@ -35,6 +40,23 @@ public class GameManager : MonoBehaviour
         timeRemaining = gameDuration;
         timerRunning = true;
         UpdateUI();
+    }
+
+    private void Awake()
+    {
+        if (highlightAction != null)
+        {
+            highlightAction.action.performed += ctx => UseHint();
+            highlightAction.action.Enable();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (highlightAction != null)
+        {
+            highlightAction.action.performed -= ctx => UseHint();
+        }
     }
 
     void Update()

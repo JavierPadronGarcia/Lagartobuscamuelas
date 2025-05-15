@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
@@ -17,7 +18,6 @@ public class SetFlag : MonoBehaviour
     [Header("Raycast")]
     public Transform rayOrigin;
     public float rayDistance = 5f;
-    public LayerMask toothLayer;
 
     [Header("Screen Material")]
     public Material redFlagMaterial;
@@ -27,6 +27,9 @@ public class SetFlag : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     private XRBaseInteractor interactorHoldingGun;
     private InputAction toggleAction;
+
+    [Header("Input Action")]
+    public InputActionReference toggleModeAction;
 
 
     private bool isHeld => interactorHoldingGun != null;
@@ -43,12 +46,21 @@ public class SetFlag : MonoBehaviour
 
         grabInteractable.selectEntered.AddListener(OnGrab);
         grabInteractable.selectExited.AddListener(OnRelease);
+        if (toggleModeAction != null)
+        {
+            toggleModeAction.action.performed += ctx => OnTogglePressed();
+            toggleModeAction.action.Enable();
+        }
     }
 
     void OnDestroy()
     {
         grabInteractable.selectEntered.RemoveListener(OnGrab);
         grabInteractable.selectExited.RemoveListener(OnRelease);
+        if (toggleModeAction != null)
+        {
+            toggleModeAction.action.performed -= ctx => OnTogglePressed();
+        }
     }
 
     void Update()

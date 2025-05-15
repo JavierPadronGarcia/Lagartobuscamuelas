@@ -21,7 +21,7 @@ public class FlagPool : MonoBehaviour
             obj.SetActive(false); // Lo desactivamos
 
             // Cambio de material en el hijo "Plane" según el material asignado en el inspector
-            Transform planeChild = obj.transform.Find("Plane");
+            Transform planeChild = obj.transform.Find("Direction/Plane");
             if (planeChild != null)
             {
                 Renderer renderer = planeChild.GetComponent<Renderer>();

@@ -6,7 +6,6 @@ public class HintHighlight : MonoBehaviour
     public float glowDuration = 30f;
     public Color glowColor = Color.yellow;
     public float glowIntensity = 3f;
-    public KeyCode testKey = KeyCode.P;
     public float maxGlowIntensity = 0f;
     public float minGlowIntensity = -9f;
     public float pulseSpeed = 2f;
@@ -25,29 +24,24 @@ public class HintHighlight : MonoBehaviour
         DisableEmission();
     }
 
+    //public void UseHint()
+    //{
+    //    if (isGlowing) return;
+    //    StartCoroutine(GlowEffect());
+    //}
+
     public void UseHint()
     {
         if (isGlowing) return;
+
+        isGlowing = true;
+        EnableEmission(glowColor * glowIntensity);
+
         StartCoroutine(GlowEffect());
+
+        if (pointLight != null)
+            pointLight.enabled = true;
     }
-
-    //public void UseHint()
-    //{
-    //    //if (hintCount > 0 && !isGlowing)
-    //    //{
-    //    //    hintCount--;
-    //    //    StartCoroutine(GlowEffect());
-    //    //}
-    //    if (isGlowing) return;
-
-    //    isGlowing = true;
-    //    //EnableEmission(glowColor * glowIntensity);
-
-    //    StartCoroutine(GlowEffect());
-
-    //    if (pointLight != null)
-    //        pointLight.enabled = true;
-    //}
 
     private IEnumerator GlowEffect()
     {

@@ -9,6 +9,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject Credits; // Referencia al objeto Credits
     [SerializeField] private GameObject Dosjugadores; // Referencia al objeto Dosjugadores
     [SerializeField] private GameObject IC; // Referencia al objeto Ui
+    [SerializeField] private GameObject Configuracion; // Referencia al objeto Configuracion
     [SerializeField] private PlayableDirector timelineDirector; // Referencia al Timeline
 
     private bool Ayudabool;
@@ -19,6 +20,7 @@ public class CanvasController : MonoBehaviour
     public Animator animatorCreditos;
     public Animator animatorDosjugadores;
     public Animator animatorIC;
+    public Animator animatorConfiguracion;
 
     private void Start()
     {
@@ -26,11 +28,11 @@ public class CanvasController : MonoBehaviour
     }
     public void ExitGame()
     {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+                EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
     public void ActivarAyuda()
@@ -103,8 +105,18 @@ public class CanvasController : MonoBehaviour
 
     public void EjecutarAnimacionYTimeline()
     {
-        animatorIC.SetTrigger("in");
+        animatorConfiguracion.Play("DifuminarCFG");
         StartCoroutine(EjecutarConEspera3());
+    }
+
+    public void ActivarConfiguracion()
+    {
+        animatorIC.Play("Voltear");        
+    }
+
+    public void ActivarICdeConfiguracion()
+    {
+        animatorConfiguracion.Play("Voltear2CFG");
     }
 }
 

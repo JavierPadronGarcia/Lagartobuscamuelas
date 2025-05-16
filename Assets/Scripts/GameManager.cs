@@ -3,6 +3,8 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Input Action")]
     public InputActionReference highlightAction;
+
+    private bool gameEnded = false;
 
     void Start()
     {
@@ -64,11 +68,10 @@ public class GameManager : MonoBehaviour
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0f)
-            {
+            if (timeRemaining <= 0f) {
                 timeRemaining = 0f;
                 timerRunning = false;
-                GameOver();
+                GameOver(false);
             }
 
             UpdateTimerUI();
@@ -94,9 +97,33 @@ public class GameManager : MonoBehaviour
         timerText.text = "Tiempo: " + seconds;
     }
 
-    void GameOver()
-    {
-        //Game Over
+    public void CheckWinCondition() {
+        int totalSafeTeeth = 0;
+        int revealedSafeTeeth = 0;
+
+        foreach (Tooth t in fieldManager.allTeeth) {
+            if (!t.isMine) {
+                totalSafeTeeth++;
+                if (t.isRevealed)
+                    revealedSafeTeeth++;
+            }
+        }
+
+        if (revealedSafeTeeth == totalSafeTeeth) {
+            GameOver(true);
+        }
+    }
+
+    public void GameOver(bool won) {
+        if (gameEnded) return; // evitar múltiples llamadas
+        gameEnded = true;
+        timerRunning = false;
+
+        // Guardar el estado de victoria/derrota en una variable accesible globalmente
+        GameState.isWin = won;
+
+        // Cargar la escena aditiva donde se mostrará el mensaje
+        SceneManager.LoadScene("FinDelJuego", LoadSceneMode.Additive);
     }
 
     public void UpdateMineCount(int change)
@@ -105,14 +132,11 @@ public class GameManager : MonoBehaviour
         minesLeftText.text = "Bombas restantes: " + minesLeft;
     }
 
-    public void LoseHealth()
-    {
+    public void LoseHealth() {
         health--;
         healthText.text = "Vida: " + health;
-        if (health <= 0)
-        {
-            GameOver();
-            timerRunning = false;
+        if (health <= 0) {
+            GameOver(false);
         }
     }
 

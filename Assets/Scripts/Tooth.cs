@@ -73,6 +73,8 @@ public class Tooth : MonoBehaviour
                 RevealAdjacent();
             }
         }
+
+        FindFirstObjectByType<GameManager>().CheckWinCondition();
     }
 
     void RevealAdjacent()

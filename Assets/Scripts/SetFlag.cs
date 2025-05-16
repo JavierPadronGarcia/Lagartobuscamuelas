@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
@@ -6,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using static UnityEngine.Rendering.GPUSort;
 
 public class SetFlag : MonoBehaviour
 {
@@ -31,9 +33,10 @@ public class SetFlag : MonoBehaviour
     [Header("Input Action")]
     public InputActionReference toggleModeAction;
 
+    [SerializeField] private GameObject laser;
+
 
     private bool isHeld => interactorHoldingGun != null;
-
     public enum FlagType
     {
         Red,
@@ -51,6 +54,7 @@ public class SetFlag : MonoBehaviour
             toggleModeAction.action.performed += ctx => OnTogglePressed();
             toggleModeAction.action.Enable();
         }
+        laser.SetActive(false);
     }
 
     void OnDestroy()
@@ -82,6 +86,7 @@ public class SetFlag : MonoBehaviour
         {
             Debug.DrawRay(rayOrigin.position, rayOrigin.forward * rayDistance, Color.red);
         }
+
     }
 
     public void OnTriggerPressed()
@@ -98,11 +103,13 @@ public class SetFlag : MonoBehaviour
     void OnGrab(SelectEnterEventArgs args)
     {
         interactorHoldingGun = args.interactorObject as XRBaseInteractor;
+        laser.SetActive(true);
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
         interactorHoldingGun = null;
+        laser.SetActive(false);
     }
 
     void TrySetOrRemoveFlag()

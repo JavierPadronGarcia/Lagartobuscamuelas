@@ -3306,6 +3306,8 @@ MonoBehaviour:
   numberOfBombs: 10
   spawnParent: {fileID: 303223923}
   allTeeth: []
+  yellowFlag: {fileID: 268849980}
+  redFlag: {fileID: 204391420}
 --- !u!4 &2070696974
 Transform:
   m_ObjectHideFlags: 0

@@ -1,13 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
-using static UnityEngine.Rendering.GPUSort;
 
 public class SetFlag : MonoBehaviour
 {
@@ -123,7 +120,7 @@ public class SetFlag : MonoBehaviour
         {
             Debug.Log($"Raycast hit: {hit.collider.name}");
 
-            Tooth tooth = hit.collider.GetComponentInParent<Tooth>();
+            Tooth tooth = hit.transform.parent.GetComponent<Tooth>();
             if (tooth != null)
             {
                 Debug.Log("Tooth component found!");

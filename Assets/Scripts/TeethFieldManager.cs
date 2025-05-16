@@ -17,6 +17,9 @@ public class TeethFieldManager : MonoBehaviour
     private Tooth[,] grid;
     public List<Tooth> allTeeth = new List<Tooth>();
 
+    public FlagPool yellowFlag;
+    public FlagPool redFlag;
+
     void Start()
     {
         supSpawnPoints.Clear();
@@ -52,6 +55,8 @@ public class TeethFieldManager : MonoBehaviour
             // Row 0 - Sup
             GameObject supToothObj = Instantiate(toothPrefab, supSpawn.position, supSpawn.rotation, supSpawn);
             Tooth supTooth = supToothObj.GetComponent<Tooth>();
+            supTooth.yellowFlag = yellowFlag;
+            supTooth.redFlag = redFlag;
             supTooth.isSup = true;
             grid[x, 0] = supTooth;
             allTeeth.Add(supTooth);
@@ -61,6 +66,8 @@ public class TeethFieldManager : MonoBehaviour
             Tooth infTooth = infToothObj.GetComponent<Tooth>();
             grid[x, 1] = infTooth;
             allTeeth.Add(infTooth);
+            infTooth.yellowFlag = yellowFlag;
+            infTooth.redFlag = redFlag;
         }
 
         // Place bombs randomly

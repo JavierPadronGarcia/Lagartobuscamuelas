@@ -127,6 +127,8 @@ MonoBehaviour:
   - {fileID: 1401778185870010840, guid: 5f9b720cbc7e98e43a9d70cf0b94120b, type: 3}
   currentFlag: {fileID: 0}
   flagSpawnPoint: {fileID: 7750440415947903517}
+  yellowFlag: {fileID: 0}
+  redFlag: {fileID: 0}
 --- !u!1001 &65655398533156715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,10 +320,34 @@ MonoBehaviour:
   callbackOptions:
     onFracture:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5772644149539599880}
+          m_TargetAssemblyTypeName: Tooth, Assembly-CSharp
+          m_MethodName: RemoveFlag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5772644149539599880}
+          m_TargetAssemblyTypeName: Tooth, Assembly-CSharp
+          m_MethodName: RemoveFragmentsOnDelay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentRefractureCount: 0
 --- !u!114 &5820437310885350358
 MonoBehaviour:

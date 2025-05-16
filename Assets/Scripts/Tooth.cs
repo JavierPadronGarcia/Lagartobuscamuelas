@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
@@ -25,6 +26,9 @@ public class Tooth : MonoBehaviour
     public GameObject currentFlag;
     [SerializeField] private Transform flagSpawnPoint;
     public Transform FlagSpawnPoint => flagSpawnPoint;
+
+    public FlagPool yellowFlag;
+    public FlagPool redFlag;
 
     void Start()
     {
@@ -109,6 +113,17 @@ public class Tooth : MonoBehaviour
             currentFlag.SetActive(false);
             currentFlag = null;
         }
+    }
+
+    public void RemoveFragmentsOnDelay()
+    {
+        StartCoroutine(RemoveFragmentsCoroutine());
+    }
+
+    private IEnumerator RemoveFragmentsCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(transform.GetChild(3).gameObject);
     }
 
     public bool HasFlag()

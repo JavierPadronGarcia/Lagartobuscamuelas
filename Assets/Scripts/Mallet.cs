@@ -9,8 +9,6 @@ public class Mallet : MonoBehaviour
         if (tooth != null)
         {
             tooth.Reveal();
-            Debug.Log(tooth.transform.GetChild(2).name);
-            tooth.transform.GetChild(2).GetComponent<Animator>().SetTrigger("Appear");
         }
     }
 }

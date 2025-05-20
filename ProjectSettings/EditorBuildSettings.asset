@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EscenaPrototipoVR.unity
     guid: 239bcce334e8c1a4285e85b4fdf17c13
   - enabled: 1
-    path: Assets/Scenes/MainMenu 1.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: c898d2fbeb4495647be9bcdd30dd4991
   - enabled: 1
     path: Assets/Scenes/EscenaPrototipoVR 1.unity

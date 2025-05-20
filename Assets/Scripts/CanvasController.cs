@@ -24,7 +24,7 @@ public class CanvasController : MonoBehaviour
 
     private void Start()
     {
-        timelineDirector.Stop();
+        if(timelineDirector != null) timelineDirector.Stop();
     }
     public void ExitGame()
     {
@@ -101,6 +101,10 @@ public class CanvasController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.9f); // Espera 0.5 segundos
         timelineDirector.Play();
+    }
+
+    public void LoadScene(string sceneName) {
+        SCManager.instance.LoadScene(sceneName);
     }
 
     public void EjecutarAnimacionYTimeline()

@@ -16,13 +16,14 @@ public class GameManager : MonoBehaviour
     [Header("Estadisticas")]
     public int health = 3;
     public int hints = 3;
-    public int minesLeft;
+    public int minesLeft = 5;
 
     [Header("UI")]
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI minesLeftText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI hintsText;
+    public GameObject canvasGameOver;
 
     [Header("Referencias")]
     public TeethFieldManager fieldManager;
@@ -40,7 +41,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        minesLeft = fieldManager.numberOfBombs;
+        health = PlayerPrefs.GetInt("Vidas");
+        hints = PlayerPrefs.GetInt("Pistas");
+        minesLeft = PlayerPrefs.GetInt("Bombas");
+        gameDuration = PlayerPrefs.GetFloat("Tiempo");
         timeRemaining = gameDuration;
         timerRunning = true;
         UpdateUI();
@@ -74,7 +78,17 @@ public class GameManager : MonoBehaviour
                 GameOver(false);
             }
 
+            if (health == 0) {
+                timeRemaining = 0f;
+                timerRunning = false;
+                GameOver(false);
+            }
+
             UpdateTimerUI();
+
+            UpdateUI();
+
+            CheckWinCondition();
         }
         // Pistas con P
         if (Input.GetKeyDown(KeyCode.P))
@@ -122,8 +136,7 @@ public class GameManager : MonoBehaviour
         // Guardar el estado de victoria/derrota en una variable accesible globalmente
         GameState.isWin = won;
 
-        // Cargar la escena aditiva donde se mostrará el mensaje
-        SceneManager.LoadScene("FinDelJuego", LoadSceneMode.Additive);
+        canvasGameOver.SetActive(true);
     }
 
     public void UpdateMineCount(int change)

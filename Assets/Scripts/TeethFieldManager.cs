@@ -20,8 +20,12 @@ public class TeethFieldManager : MonoBehaviour
     public FlagPool yellowFlag;
     public FlagPool redFlag;
 
+    public GameManager gameManager;
+
     void Start()
     {
+        numberOfBombs = gameManager.minesLeft;
+
         supSpawnPoints.Clear();
         infSpawnPoints.Clear();
 

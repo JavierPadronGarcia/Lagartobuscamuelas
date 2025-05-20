@@ -18,7 +18,6 @@ public class Tooth : MonoBehaviour
     public Material revealedMaterial;
     public Material mineMaterial;
 
-    private Renderer rend;
     public HintHighlight highlight;
 
     [SerializeField] Transform NumberSpawnPoint;
@@ -32,8 +31,6 @@ public class Tooth : MonoBehaviour
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
-        if (rend) rend.material = defaultMaterial;
         if (highlight == null)
             highlight = GetComponentInChildren<HintHighlight>();
         GameObject spawnedNumber = null;
@@ -49,33 +46,34 @@ public class Tooth : MonoBehaviour
 
     }
 
-    public void Reveal()
-    {
+    public void Reveal() {
+        Debug.Log("ª");
         if (isRevealed)
             return;
 
         isRevealed = true;
 
-        if (isMine)
-        {
-            rend.material = mineMaterial;
+        GameManager gm = FindFirstObjectByType<GameManager>();
+
+        if (isMine) {
+            //rend.material = mineMaterial;
             Debug.Log("Boom! You hit a mine.");
-            // Trigger failure logic here
-        }
-        else
-        {
-            rend.material = revealedMaterial;
-            Debug.Log("Revealed Tooth. Adjacent mines: " + adjacentMines);
 
-            if (adjacentMines == 0)
-            {
-                // Optional: reveal nearby teeth automatically
-                RevealAdjacent();
-            }
-        }
+            // Quitar vida
+            gm.LoseHealth();
+        } else {
+            //rend.material = revealedMaterial;
+            //Debug.Log("Revealed Tooth. Adjacent mines: " + adjacentMines);
 
-        FindFirstObjectByType<GameManager>().CheckWinCondition();
+            //if (adjacentMines == 0) {
+            //    RevealAdjacent();
+            //}
+
+            // Verifica si ya ganó después de revelar un diente sano
+            gm.CheckWinCondition();
+        }
     }
+
 
     void RevealAdjacent()
     {

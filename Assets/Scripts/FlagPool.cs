@@ -6,14 +6,18 @@ public class FlagPool : MonoBehaviour
     // Generamos la lista de objetos
     private List<GameObject> pooledObjects = new List<GameObject>();
     private List<GameObject> activeFlags = new List<GameObject>();
-    [SerializeField] int amountToPool = 5;
+    private int amountToPool;
     // Objeto que guardaremos en el pool
     [SerializeField] GameObject flagPrefab;
     [SerializeField] Material flagMaterial;
 
+    public GameManager gameManager;
+
     // Método que se ejecuta antes del primer frame
     void Start()
     {
+        amountToPool = PlayerPrefs.GetInt("Bombas");
+        print(amountToPool);
         // Generamos todos los objetos
         for (int i = 0; i < amountToPool; i++)
         {

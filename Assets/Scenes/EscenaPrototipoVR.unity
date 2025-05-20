@@ -350,6 +350,7 @@ MonoBehaviour:
   amountToPool: 5
   flagPrefab: {fileID: 6428630160255938128, guid: fe872f390d0ff75449179157bc7d165a, type: 3}
   flagMaterial: {fileID: 2100000, guid: 1b44ed22a09912b4aa250ab03d446bc3, type: 2}
+  gameManager: {fileID: 478864309}
 --- !u!4 &204391421
 Transform:
   m_ObjectHideFlags: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   amountToPool: 5
   flagPrefab: {fileID: 6428630160255938128, guid: fe872f390d0ff75449179157bc7d165a, type: 3}
   flagMaterial: {fileID: 2100000, guid: 8cd1fd643248e6f4ea61660f49581d92, type: 2}
+  gameManager: {fileID: 478864309}
 --- !u!4 &268849981
 Transform:
   m_ObjectHideFlags: 0

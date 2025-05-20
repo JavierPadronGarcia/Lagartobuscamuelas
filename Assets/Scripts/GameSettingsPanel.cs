@@ -23,7 +23,7 @@ public class GameSettingsPanel : MonoBehaviour
         UpdateUI();
     }
 
-    public void GoToLocalGame()
+    public void SaveSettings()
     {
         PlayerPrefs.SetFloat("Tiempo", timeOptions[currentTimeIndex]);
         PlayerPrefs.SetInt("Bombas", bombsOptions[currentBombsIndex]);
@@ -31,10 +31,6 @@ public class GameSettingsPanel : MonoBehaviour
         PlayerPrefs.SetInt("Pistas", hintsOptions[currentHintsIndex]);
 
         PlayerPrefs.Save();
-
-        // SCManager.instance.LoadScene("ControllerTutorial");
-        // AudioManager.instance.PlayMusic("Platano_Partida_Loop");
-        // AudioManager.instance.PlaySFX("Botones");
     }
 
     // Flechas
@@ -121,6 +117,7 @@ public class GameSettingsPanel : MonoBehaviour
         bombsText.text = bombsOptions[currentBombsIndex].ToString();
         livesText.text = livesOptions[currentLivesIndex].ToString();
         hintsText.text = hintsOptions[currentHintsIndex].ToString();
+        SaveSettings();
     }
 
     private int GetClosestIndex<T>(T[] array, T value) where T : System.IComparable

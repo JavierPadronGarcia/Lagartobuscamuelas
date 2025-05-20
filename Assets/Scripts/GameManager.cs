@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI minesLeftText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI hintsText;
+    public TextMeshProUGUI resultText;
     public GameObject canvasGameOver;
 
     [Header("Referencias")]
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     public InputActionReference highlightAction;
 
     private bool gameEnded = false;
+
+    public bool comprobar = false; 
 
     void Start()
     {
@@ -73,22 +76,20 @@ public class GameManager : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining <= 0f) {
-                timeRemaining = 0f;
-                timerRunning = false;
                 GameOver(false);
+                print("Acabo tiempo");
             }
 
             if (health == 0) {
-                timeRemaining = 0f;
-                timerRunning = false;
                 GameOver(false);
+                print("Sin vidas");
             }
 
             UpdateTimerUI();
 
             UpdateUI();
 
-            CheckWinCondition();
+            if(comprobar)  CheckWinCondition();
         }
         // Pistas con P
         if (Input.GetKeyDown(KeyCode.P))
@@ -112,19 +113,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void CheckWinCondition() {
-        int totalSafeTeeth = 0;
+        int totalSafeTeeth = (fieldManager.rows * fieldManager.cols) - fieldManager.numberOfBombs;
         int revealedSafeTeeth = 0;
 
         foreach (Tooth t in fieldManager.allTeeth) {
-            if (!t.isMine) {
-                totalSafeTeeth++;
                 if (t.isRevealed)
                     revealedSafeTeeth++;
-            }
         }
 
         if (revealedSafeTeeth == totalSafeTeeth) {
             GameOver(true);
+            print("Rompiste los dientes sanos");
         }
     }
 
@@ -132,9 +131,16 @@ public class GameManager : MonoBehaviour
         if (gameEnded) return; // evitar múltiples llamadas
         gameEnded = true;
         timerRunning = false;
+        timeRemaining = 0f;
 
         // Guardar el estado de victoria/derrota en una variable accesible globalmente
         GameState.isWin = won;
+
+        if (GameState.isWin) {
+            resultText.text = "¡Has ganado!";
+        } else {
+            resultText.text = "Has perdido.";
+        }
 
         canvasGameOver.SetActive(true);
     }
@@ -148,9 +154,6 @@ public class GameManager : MonoBehaviour
     public void LoseHealth() {
         health--;
         healthText.text = "Vida: " + health;
-        if (health <= 0) {
-            GameOver(false);
-        }
     }
 
     public void UseHint()

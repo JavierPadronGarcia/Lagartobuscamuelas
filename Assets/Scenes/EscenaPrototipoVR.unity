@@ -2125,9 +2125,11 @@ MonoBehaviour:
   minesLeftText: {fileID: 1086699988}
   healthText: {fileID: 374180374}
   hintsText: {fileID: 540048450}
+  resultText: {fileID: 1514187478034946177}
   canvasGameOver: {fileID: 6314799587677639993}
   fieldManager: {fileID: 2070696973}
   highlightAction: {fileID: -3537405894546958688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  comprobar: 0
 --- !u!4 &478864310
 Transform:
   m_ObjectHideFlags: 0

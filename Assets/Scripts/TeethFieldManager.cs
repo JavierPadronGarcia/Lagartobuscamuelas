@@ -44,6 +44,8 @@ public class TeethFieldManager : MonoBehaviour
         }
 
         GenerateGrid();
+
+        gameManager.comprobar = true;
     }
 
     void GenerateGrid()

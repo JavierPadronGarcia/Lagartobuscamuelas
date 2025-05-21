@@ -8,15 +8,15 @@ public class GameSettingsPanel : MonoBehaviour
     public Text livesText;
     public Text hintsText;
 
-    private float[] timeOptions = { 60f, 90f, 120f, 180f, 240f };
-    private int[] bombsOptions = { 5, 6, 7, 8, 9, 10 };
-    private int[] livesOptions = { 1, 2, 3, 4, 5 };
-    private int[] hintsOptions = { 1, 2, 3, 4, 5 };
+    private float[] timeOptions = { 60f, 90f, 120f, 180f, 240f, 270f, 300f };
+    private int[] bombsOptions = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+    private int[] livesOptions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    private int[] hintsOptions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    private int currentTimeIndex = 0;
-    private int currentBombsIndex = 1;
-    private int currentLivesIndex = 0;
-    private int currentHintsIndex = 1;
+    private int currentTimeIndex = 2;
+    private int currentBombsIndex = 0;
+    private int currentLivesIndex = 2;
+    private int currentHintsIndex = 2;
 
     private void Start()
     {
@@ -85,7 +85,7 @@ public class GameSettingsPanel : MonoBehaviour
     // Dificultades
     public void SetEasy()
     {
-        currentTimeIndex = GetClosestIndex(timeOptions, 240f);
+        currentTimeIndex = GetClosestIndex(timeOptions, 120f);
         currentBombsIndex = GetClosestIndex(bombsOptions, 5);
         currentLivesIndex = GetClosestIndex(livesOptions, 5);
         currentHintsIndex = GetClosestIndex(hintsOptions, 5);
@@ -94,7 +94,7 @@ public class GameSettingsPanel : MonoBehaviour
 
     public void SetNormal()
     {
-        currentTimeIndex = GetClosestIndex(timeOptions, 120f);
+        currentTimeIndex = GetClosestIndex(timeOptions, 180f);
         currentBombsIndex = GetClosestIndex(bombsOptions, 7);
         currentLivesIndex = GetClosestIndex(livesOptions, 3);
         currentHintsIndex = GetClosestIndex(hintsOptions, 3);
@@ -103,7 +103,7 @@ public class GameSettingsPanel : MonoBehaviour
 
     public void SetHard()
     {
-        currentTimeIndex = GetClosestIndex(timeOptions, 60f);
+        currentTimeIndex = GetClosestIndex(timeOptions, 240f);
         currentBombsIndex = GetClosestIndex(bombsOptions, 10);
         currentLivesIndex = GetClosestIndex(livesOptions, 1);
         currentHintsIndex = GetClosestIndex(hintsOptions, 1);

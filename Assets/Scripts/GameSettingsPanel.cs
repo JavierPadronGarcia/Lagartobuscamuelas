@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameSettingsPanel : MonoBehaviour
 {
-    public Text timeText;
-    public Text bombsText;
-    public Text livesText;
-    public Text hintsText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI bombsText;
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI hintsText;
 
     private float[] timeOptions = { 60f, 90f, 120f, 180f, 240f, 270f, 300f };
     private int[] bombsOptions = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
@@ -34,61 +34,25 @@ public class GameSettingsPanel : MonoBehaviour
     }
 
     // Flechas
-    public void LessTime()
-    {
-        currentTimeIndex = (currentTimeIndex - 1 + timeOptions.Length) % timeOptions.Length;
-        UpdateUI();
-    }
+    public void LessTime() { currentTimeIndex = (currentTimeIndex - 1 + timeOptions.Length) % timeOptions.Length; UpdateUI(); }
+    public void MoreTime() { currentTimeIndex = (currentTimeIndex + 1) % timeOptions.Length; UpdateUI(); }
 
-    public void MoreTime()
-    {
-        currentTimeIndex = (currentTimeIndex + 1) % timeOptions.Length;
-        UpdateUI();
-    }
+    public void LessBombs() { currentBombsIndex = (currentBombsIndex - 1 + bombsOptions.Length) % bombsOptions.Length; UpdateUI(); }
+    public void MoreBombs() { currentBombsIndex = (currentBombsIndex + 1) % bombsOptions.Length; UpdateUI(); }
 
-    public void LessBombs()
-    {
-        currentBombsIndex = (currentBombsIndex - 1 + bombsOptions.Length) % bombsOptions.Length;
-        UpdateUI();
-    }
+    public void LessLives() { currentLivesIndex = (currentLivesIndex - 1 + livesOptions.Length) % livesOptions.Length; UpdateUI(); }
+    public void MoreLives() { currentLivesIndex = (currentLivesIndex + 1) % livesOptions.Length; UpdateUI(); }
 
-    public void MoreBombs()
-    {
-        currentBombsIndex = (currentBombsIndex + 1) % bombsOptions.Length;
-        UpdateUI();
-    }
-
-    public void LessLives()
-    {
-        currentLivesIndex = (currentLivesIndex - 1 + livesOptions.Length) % livesOptions.Length;
-        UpdateUI();
-    }
-
-    public void MoreLives()
-    {
-        currentLivesIndex = (currentLivesIndex + 1) % livesOptions.Length;
-        UpdateUI();
-    }
-
-    public void LessHints()
-    {
-        currentHintsIndex = (currentHintsIndex - 1 + hintsOptions.Length) % hintsOptions.Length;
-        UpdateUI();
-    }
-
-    public void MoreHints()
-    {
-        currentHintsIndex = (currentHintsIndex + 1) % hintsOptions.Length;
-        UpdateUI();
-    }
+    public void LessHints() { currentHintsIndex = (currentHintsIndex - 1 + hintsOptions.Length) % hintsOptions.Length; UpdateUI(); }
+    public void MoreHints() { currentHintsIndex = (currentHintsIndex + 1) % hintsOptions.Length; UpdateUI(); }
 
     // Dificultades
     public void SetEasy()
     {
         currentTimeIndex = GetClosestIndex(timeOptions, 120f);
         currentBombsIndex = GetClosestIndex(bombsOptions, 5);
-        currentLivesIndex = GetClosestIndex(livesOptions, 5);
-        currentHintsIndex = GetClosestIndex(hintsOptions, 5);
+        currentLivesIndex = GetClosestIndex(livesOptions, 3);
+        currentHintsIndex = GetClosestIndex(hintsOptions, 3);
         UpdateUI();
     }
 
@@ -96,8 +60,8 @@ public class GameSettingsPanel : MonoBehaviour
     {
         currentTimeIndex = GetClosestIndex(timeOptions, 180f);
         currentBombsIndex = GetClosestIndex(bombsOptions, 7);
-        currentLivesIndex = GetClosestIndex(livesOptions, 3);
-        currentHintsIndex = GetClosestIndex(hintsOptions, 3);
+        currentLivesIndex = GetClosestIndex(livesOptions, 2);
+        currentHintsIndex = GetClosestIndex(hintsOptions, 2);
         UpdateUI();
     }
 
@@ -127,7 +91,6 @@ public class GameSettingsPanel : MonoBehaviour
             if (array[i].CompareTo(value) == 0)
                 return i;
         }
-
         return 0;
     }
 }

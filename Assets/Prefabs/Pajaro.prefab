@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 251362822957416103}
   - component: {fileID: 1904338967608913485}
   - component: {fileID: 8934039259806266369}
+  - component: {fileID: 7967154344943868973}
   m_Layer: 0
   m_Name: Pajaro
   m_TagString: Untagged
@@ -74,10 +75,24 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
+  m_Height: 8
+  m_BaseOffset: 8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7967154344943868973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673704733757348712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e70d14c3a2e1b4cabf33301933990b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 50
+  arrivalThreshold: 0.5
 --- !u!1001 &8183690967835151740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,19 +115,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97159564
+      value: 0.6870228
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.1673348
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.6870209
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.23664741
+      value: 0.16733526
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -120,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f092ecd2bdbf570448ec3cc9aa2669db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

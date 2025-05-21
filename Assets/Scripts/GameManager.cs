@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         int revealedSafeTeeth = 0;
 
         foreach (Tooth t in fieldManager.allTeeth) {
-                if (t.isRevealed)
+                if (t.isRevealed && !t.isMine)
                     revealedSafeTeeth++;
         }
 

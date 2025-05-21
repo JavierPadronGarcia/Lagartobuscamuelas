@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Tooth t in fieldManager.allTeeth)
         {
-            if (!t.isMine && t.highlight != null)
+            if (!t.isMine && t.highlight != null && !t.isRevealed)
                 validTeeth.Add(t);
         }
 

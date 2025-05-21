@@ -29,6 +29,9 @@ public class Tooth : MonoBehaviour
     public FlagPool yellowFlag;
     public FlagPool redFlag;
 
+    public AudioSource revealSFX;
+    public AudioSource breakSFX;
+
     void Start()
     {
         if (highlight == null)
@@ -59,6 +62,8 @@ public class Tooth : MonoBehaviour
             //rend.material = mineMaterial;
             Debug.Log("Boom! You hit a mine.");
 
+            breakSFX.Play();
+
             // Quitar vida
             gm.LoseHealth();
         } else {
@@ -68,6 +73,8 @@ public class Tooth : MonoBehaviour
             //if (adjacentMines == 0) {
             //    RevealAdjacent();
             //}
+
+            breakSFX.Play();
 
             // Verifica si ya ganó después de revelar un diente sano
             gm.CheckWinCondition();

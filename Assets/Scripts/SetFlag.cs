@@ -32,6 +32,9 @@ public class SetFlag : MonoBehaviour
 
     [SerializeField] private GameObject laser;
 
+    public AudioSource changeFlag;
+    public AudioSource setFlag;
+
 
     private bool isHeld => interactorHoldingGun != null;
     public enum FlagType
@@ -123,6 +126,7 @@ public class SetFlag : MonoBehaviour
             Tooth tooth = hit.transform.parent.GetComponent<Tooth>();
             if (tooth != null)
             {
+                setFlag.Play();
                 Debug.Log("Tooth component found!");
                 if (tooth.HasFlag())
                 {
@@ -156,6 +160,7 @@ public class SetFlag : MonoBehaviour
 
     public void ToggleMode()
     {
+        changeFlag.Play();
         currentMode = currentMode == FlagType.Red ? FlagType.Yellow : FlagType.Red;
         UpdateScreenMaterial();
     }

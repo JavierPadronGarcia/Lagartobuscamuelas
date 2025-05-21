@@ -137,8 +137,10 @@ public class GameManager : MonoBehaviour
         GameState.isWin = won;
 
         if (GameState.isWin) {
+            AudioManager.instance.PlaySFX("Victory");
             resultText.text = "¡Has ganado!";
         } else {
+            AudioManager.instance.PlaySFX("Lose");
             resultText.text = "Has perdido.";
         }
 

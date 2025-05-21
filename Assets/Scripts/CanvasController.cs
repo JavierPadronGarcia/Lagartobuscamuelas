@@ -75,6 +75,7 @@ public class CanvasController : MonoBehaviour
         }
         else
         {
+            //animatorIC.Play("MenuIC");
             animatorIC.SetTrigger("in");
             StartCoroutine(EjecutarConEspera2());
             Dosjugadoresbool = true;

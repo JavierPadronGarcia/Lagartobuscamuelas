@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if (fieldManager == null)
         {
-            Debug.LogError("TeethFieldManager not assigned in GameManager.");
+            //Debug.LogError("TeethFieldManager not assigned in GameManager.");
             return;
         }
 

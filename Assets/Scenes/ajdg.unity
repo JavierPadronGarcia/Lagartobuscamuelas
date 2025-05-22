@@ -5869,6 +5869,8 @@ MonoBehaviour:
   screenRenderer: {fileID: 0}
   toggleModeAction: {fileID: 0}
   laser: {fileID: 0}
+  changeFlag: {fileID: 0}
+  setFlag: {fileID: 0}
 --- !u!4 &818427083
 Transform:
   m_ObjectHideFlags: 0

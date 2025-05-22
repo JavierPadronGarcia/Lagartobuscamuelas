@@ -9915,6 +9915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionSource: {fileID: 974816238192346299}
   BurnParticles: {fileID: 5921747747640811475}
+  ExplosionParticles: {fileID: 76294535123451510}
   explosionDelay: 2
 --- !u!1001 &7325784281501005764
 PrefabInstance:
@@ -9989,6 +9990,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a59038fe8f8594c90d43afc1bfcd26, type: 3}
+--- !u!198 &76294535123451510 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7252313293859572146, guid: e0a59038fe8f8594c90d43afc1bfcd26, type: 3}
+  m_PrefabInstance: {fileID: 7325784281501005764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8908113656135209896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2176808524061811820, guid: e0a59038fe8f8594c90d43afc1bfcd26, type: 3}

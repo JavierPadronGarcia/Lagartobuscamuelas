@@ -1977,10 +1977,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6805287762171890464, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Game
-      objectReference: {fileID: 0}
     - target: {fileID: 6805287762171890467, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2095,10 +2091,6 @@ PrefabInstance:
       objectReference: {fileID: 2066434938}
     - target: {fileID: 8934764243114164799, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: pistolaPosicion
-      value: 
-      objectReference: {fileID: 372130887}
-    - target: {fileID: 8934764243114164799, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
-      propertyPath: pistolaPosition
       value: 
       objectReference: {fileID: 372130887}
     - target: {fileID: 8934764243114164799, guid: e156534175669414c8b11e3a61b5acb5, type: 3}

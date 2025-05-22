@@ -41,6 +41,11 @@ public class Tooth : MonoBehaviour
         {
             spawnedNumber = Instantiate(NumberPrefabs[adjacentMines], NumberSpawnPoint);
         }
+        else
+        {
+            spawnedNumber = Instantiate(NumberPrefabs[6], NumberSpawnPoint);
+        }
+
         if (spawnedNumber != null && isSup)
         {
             spawnedNumber.transform.Rotate(new Vector3(0, 0, 180));
@@ -49,8 +54,8 @@ public class Tooth : MonoBehaviour
 
     }
 
-    public void Reveal() {
-        Debug.Log("ª");
+    public void Reveal()
+    {
         if (isRevealed)
             return;
 
@@ -58,7 +63,8 @@ public class Tooth : MonoBehaviour
 
         GameManager gm = FindFirstObjectByType<GameManager>();
 
-        if (isMine) {
+        if (isMine)
+        {
             //rend.material = mineMaterial;
             Debug.Log("Boom! You hit a mine.");
 
@@ -66,7 +72,9 @@ public class Tooth : MonoBehaviour
 
             // Quitar vida
             gm.LoseHealth();
-        } else {
+        }
+        else
+        {
             //rend.material = revealedMaterial;
             //Debug.Log("Revealed Tooth. Adjacent mines: " + adjacentMines);
 

@@ -1281,16 +1281,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138638072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6350553, y: 1.6350553, z: 1.6350553}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0.000114930794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1690171175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1024, y: 468}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138638074
 MonoBehaviour:
@@ -11479,6 +11479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDuration: 5
+  timeRemaining: 0
   health: 3
   hints: 3
   minesLeft: 5
@@ -11488,7 +11489,14 @@ MonoBehaviour:
   hintsText: {fileID: 0}
   resultText: {fileID: 0}
   canvasGameOver: {fileID: 0}
+  handData: {fileID: 0}
+  pizarraData: {fileID: 0}
+  timeLeftText: {fileID: 0}
+  fadeImage: {fileID: 0}
+  fadeDuration: 2
   fieldManager: {fileID: 0}
+  XROrigin: {fileID: 0}
+  finishGamePosition: {fileID: 0}
   highlightAction: {fileID: -3537405894546958688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   comprobar: 0
 --- !u!4 &1177249392
@@ -15945,6 +15953,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 905397493463893546, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1576027628757688172, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16041,6 +16053,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1551.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 122.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 835.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760379794957809088, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -428.40002
+      objectReference: {fileID: 0}
     - target: {fileID: 3928089971474900407, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -16093,6 +16129,38 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4634539762280195322, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812761771693500438, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1551.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 122.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 835.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850999482766971946, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -61.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4896878308204256216, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -16132,6 +16200,34 @@ PrefabInstance:
     - target: {fileID: 5261487936053420414, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355083401610747765, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1551.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 122.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 835.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823114993270373646, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -306
       objectReference: {fileID: 0}
     - target: {fileID: 5923826072807497483, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16248,6 +16344,30 @@ PrefabInstance:
     - target: {fileID: 7561556039203984934, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1551.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 122.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 835.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647905298172562976, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -183.6
       objectReference: {fileID: 0}
     - target: {fileID: 8014702692673645128, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags

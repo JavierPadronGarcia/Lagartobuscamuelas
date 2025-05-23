@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Temporizador")]
     public float gameDuration = 120f;
-    private float timeRemaining;
+    public float timeRemaining;
     private bool timerRunning = false;
 
     [Header("Estadisticas")]
@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI hintsText;
     public TextMeshProUGUI resultText;
     public GameObject canvasGameOver;
+    public GameDataShow handData;
+    public GameDataShow pizarraData;
 
     [Header("UI Notificaciones")]
     public TextMeshProUGUI timeLeftText;
@@ -120,10 +122,12 @@ public class GameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        UpdateTimerUI();
-        minesLeftText.text = "Bombas restantes: " + minesLeft;
-        healthText.text = "Vida: " + health;
-        hintsText.text = "Pistas: " + hints;
+        pizarraData.UpdateUI();
+        handData.UpdateUI();
+        //UpdateTimerUI();
+        //minesLeftText.text = "Bombas restantes: " + minesLeft;
+        //healthText.text = "Vida: " + health;
+        //hintsText.text = "Pistas: " + hints;
     }
 
     void UpdateTimerUI()
@@ -176,6 +180,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOverCoroutine()
     {
+        yield return new WaitForSeconds(2f);
         StartCoroutine(FadeImageCoroutine(true));
         yield return new WaitForSeconds(fadeDuration + 0.2f);
         XROrigin.transform.SetPositionAndRotation(finishGamePosition.position, finishGamePosition.rotation);

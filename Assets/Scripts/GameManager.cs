@@ -21,10 +21,6 @@ public class GameManager : MonoBehaviour
     public int minesLeft = 5;
 
     [Header("UI")]
-    public TextMeshProUGUI timerText;
-    public TextMeshProUGUI minesLeftText;
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI hintsText;
     public TextMeshProUGUI resultText;
     public GameObject canvasGameOver;
     public GameDataShow handData;
@@ -101,9 +97,6 @@ public class GameManager : MonoBehaviour
                 timeLeftText.gameObject.SetActive(true);
                 Invoke("HideTimeLeftText", 2f);
             }
-
-            UpdateTimerUI();
-
             UpdateUI();
 
             if (comprobar) CheckWinCondition();
@@ -124,16 +117,6 @@ public class GameManager : MonoBehaviour
     {
         pizarraData.UpdateUI();
         handData.UpdateUI();
-        //UpdateTimerUI();
-        //minesLeftText.text = "Bombas restantes: " + minesLeft;
-        //healthText.text = "Vida: " + health;
-        //hintsText.text = "Pistas: " + hints;
-    }
-
-    void UpdateTimerUI()
-    {
-        int seconds = Mathf.CeilToInt(timeRemaining);
-        timerText.text = "Tiempo: " + seconds;
     }
 
     public void CheckWinCondition()
@@ -216,7 +199,6 @@ public class GameManager : MonoBehaviour
     public void UpdateMineCount(int change)
     {
         minesLeft += change;
-        minesLeftText.text = "Bombas restantes: " + minesLeft;
     }
 
     public void LoseHealth()
@@ -228,7 +210,6 @@ public class GameManager : MonoBehaviour
             print("Sin vidas");
             health = 0;
         }
-        healthText.text = "Vidas: " + health;
     }
 
     public void UseHint()
@@ -255,6 +236,5 @@ public class GameManager : MonoBehaviour
         chosen.highlight.UseHint();
 
         hints--;
-        hintsText.text = "Pistas: " + hints;
     }
 }

@@ -17,7 +17,6 @@ public class FlagPool : MonoBehaviour
     void Start()
     {
         amountToPool = PlayerPrefs.GetInt("Bombas");
-        print(amountToPool);
         // Generamos todos los objetos
         for (int i = 0; i < amountToPool; i++)
         {

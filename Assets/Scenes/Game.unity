@@ -2916,8 +2916,8 @@ MonoBehaviour:
   hintsText: {fileID: 540048450}
   resultText: {fileID: 1514187478034946177}
   canvasGameOver: {fileID: 6314799587677639993}
-  handData: {fileID: 0}
-  pizarraData: {fileID: 0}
+  handData: {fileID: 1026804819}
+  pizarraData: {fileID: 554640921}
   timeLeftText: {fileID: 1167159029}
   fadeImage: {fileID: 509352705}
   fadeDuration: 2
@@ -3112,6 +3112,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &554640921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 913681032846153063, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+  m_PrefabInstance: {fileID: 327679195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ff962e57300e348baf8168fb354bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &669775550
@@ -3720,6 +3731,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026804819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2237638052995026656, guid: dc56b4aa649545745af93aa149ee7011, type: 3}
+  m_PrefabInstance: {fileID: 1698395001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ff962e57300e348baf8168fb354bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1086699988 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 236082409736996402, guid: dc56b4aa649545745af93aa149ee7011, type: 3}

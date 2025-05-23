@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,15 +28,25 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI resultText;
     public GameObject canvasGameOver;
 
+    [Header("UI Notificaciones")]
+    public TextMeshProUGUI timeLeftText;
+
+    [Header("Fades")]
+    public Image fadeImage;
+    public float fadeDuration = 2f;
+
     [Header("Referencias")]
     public TeethFieldManager fieldManager;
+    public GameObject XROrigin;
+    public Transform finishGamePosition;
 
     [Header("Input Action")]
     public InputActionReference highlightAction;
 
     private bool gameEnded = false;
+    private bool thirtySecondsShown = false;
 
-    public bool comprobar = false; 
+    public bool comprobar = false;
 
     void Start()
     {
@@ -75,27 +87,35 @@ public class GameManager : MonoBehaviour
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0f) {
+
+            if (timeRemaining <= 0f)
+            {
                 GameOver(false);
                 print("Acabo tiempo");
             }
-
-            if (health == 0) {
-                GameOver(false);
-                print("Sin vidas");
+            else if (timeRemaining <= 30f && !thirtySecondsShown)
+            {
+                thirtySecondsShown = true;
+                timeLeftText.gameObject.SetActive(true);
+                Invoke("HideTimeLeftText", 2f);
             }
 
             UpdateTimerUI();
 
             UpdateUI();
 
-            if(comprobar)  CheckWinCondition();
+            if (comprobar) CheckWinCondition();
         }
         // Pistas con P
         if (Input.GetKeyDown(KeyCode.P))
         {
             UseHint();
         }
+    }
+
+    private void HideTimeLeftText()
+    {
+        timeLeftText.gameObject.SetActive(false);
     }
 
     void UpdateUI()
@@ -112,22 +132,26 @@ public class GameManager : MonoBehaviour
         timerText.text = "Tiempo: " + seconds;
     }
 
-    public void CheckWinCondition() {
+    public void CheckWinCondition()
+    {
         int totalSafeTeeth = (fieldManager.rows * fieldManager.cols) - fieldManager.numberOfBombs;
         int revealedSafeTeeth = 0;
 
-        foreach (Tooth t in fieldManager.allTeeth) {
-                if (t.isRevealed && !t.isMine)
-                    revealedSafeTeeth++;
+        foreach (Tooth t in fieldManager.allTeeth)
+        {
+            if (t.isRevealed && !t.isMine)
+                revealedSafeTeeth++;
         }
 
-        if (revealedSafeTeeth == totalSafeTeeth) {
+        if (revealedSafeTeeth == totalSafeTeeth)
+        {
             GameOver(true);
             print("Rompiste los dientes sanos");
         }
     }
 
-    public void GameOver(bool won) {
+    public void GameOver(bool won)
+    {
         if (gameEnded) return; // evitar múltiples llamadas
         gameEnded = true;
         timerRunning = false;
@@ -136,16 +160,53 @@ public class GameManager : MonoBehaviour
         // Guardar el estado de victoria/derrota en una variable accesible globalmente
         GameState.isWin = won;
 
-        if (GameState.isWin) {
+        if (GameState.isWin)
+        {
             AudioManager.instance.PlaySFX("Victory");
             resultText.text = "¡Has ganado!";
-        } else {
+        }
+        else
+        {
             AudioManager.instance.PlaySFX("Lose");
             resultText.text = "Has perdido.";
         }
 
-        canvasGameOver.SetActive(true);
+        StartCoroutine(GameOverCoroutine());
     }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        StartCoroutine(FadeImageCoroutine(true));
+        yield return new WaitForSeconds(fadeDuration + 0.2f);
+        XROrigin.transform.SetPositionAndRotation(finishGamePosition.position, finishGamePosition.rotation);
+        canvasGameOver.SetActive(true);
+        StartCoroutine(FadeImageCoroutine(false));
+    }
+
+    private IEnumerator FadeImageCoroutine(bool fadeIn = true)
+    {
+        float startAlpha = fadeIn ? 0f : 1f;
+        float endAlpha = fadeIn ? 1f : 0f;
+        float elapsedTime = 0f;
+
+        Color color = fadeImage.color;
+        color.a = startAlpha;
+        fadeImage.color = color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / fadeDuration);
+            color.a = alpha;
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        // Asegurar valor final exacto
+        color.a = endAlpha;
+        fadeImage.color = color;
+    }
+
 
     public void UpdateMineCount(int change)
     {
@@ -153,9 +214,16 @@ public class GameManager : MonoBehaviour
         minesLeftText.text = "Bombas restantes: " + minesLeft;
     }
 
-    public void LoseHealth() {
+    public void LoseHealth()
+    {
         health--;
-        healthText.text = "Vida: " + health;
+        if (health <= 0)
+        {
+            GameOver(false);
+            print("Sin vidas");
+            health = 0;
+        }
+        healthText.text = "Vidas: " + health;
     }
 
     public void UseHint()

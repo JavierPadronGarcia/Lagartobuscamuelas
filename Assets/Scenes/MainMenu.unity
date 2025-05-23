@@ -16477,6 +16477,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742866699097897300, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6805287762171890466, guid: e156534175669414c8b11e3a61b5acb5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

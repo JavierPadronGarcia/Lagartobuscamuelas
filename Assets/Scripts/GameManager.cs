@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.XR.CoreUtils;
 
 public class GameManager : MonoBehaviour
 {
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeImageCoroutine(true));
         yield return new WaitForSeconds(fadeDuration + 0.2f);
         XROrigin.transform.SetPositionAndRotation(finishGamePosition.position, finishGamePosition.rotation);
+        XROrigin.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
         canvasGameOver.SetActive(true);
         StartCoroutine(FadeImageCoroutine(false));
     }

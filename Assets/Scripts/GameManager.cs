@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             {
                 thirtySecondsShown = true;
                 timeLeftText.gameObject.SetActive(true);
+                AudioManager.instance.PlayMusic("Final");
                 Invoke("HideTimeLeftText", 2f);
             }
             UpdateUI();

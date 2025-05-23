@@ -60,4 +60,17 @@ public class PizarraCanvasController : MonoBehaviour
     {
         SCManager.instance.LoadScene(sceneName);
     }
+
+    public void SonidoClickBoton()
+    {
+        AudioManager.instance.PlaySFX("click_001");
+    }
+    public void SonidoClickAtras()
+    {
+        AudioManager.instance.PlaySFX("drop_001");
+    }
+    public void SonidoClickEmpezarPartida()
+    {
+        AudioManager.instance.PlaySFX("confirmation_004");
+    }
 }

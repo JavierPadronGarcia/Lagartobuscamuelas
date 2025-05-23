@@ -3,6 +3,7 @@
 // ---------------------------------------------------------------------------------
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -42,6 +43,31 @@ public class AudioManager : MonoBehaviour
         LoadSFXClips();
         LoadMusicClips();
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "MainMenu":
+                PlayMusic("Menu");
+                break;
+            case "Game":
+                PlayMusic("Partida");
+                break;
+            default:
+                StopMusic();
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
     }
 
     // Método privado para cargar los efectos de sonido directamente desde las carpetas

@@ -123,5 +123,18 @@ public class CanvasController : MonoBehaviour
     {
         animatorConfiguracion.Play("Voltear2CFG");
     }
+
+    public void SonidoClickBoton()
+    {
+        AudioManager.instance.PlaySFX("click_001");
+    }
+    public void SonidoClickAtras()
+    {
+        AudioManager.instance.PlaySFX("drop_001");
+    }
+    public void SonidoClickEmpezarPartida()
+    {
+        AudioManager.instance.PlaySFX("confirmation_004");
+    }
 }
 

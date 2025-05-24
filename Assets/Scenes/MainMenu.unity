@@ -4235,6 +4235,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pajaro
       objectReference: {fileID: 0}
+    - target: {fileID: 4152460879101738338, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
+    - target: {fileID: 4902294701687453369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
     - target: {fileID: 8509823002271967895, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -4251,6 +4259,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587790490317543323, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
     - target: {fileID: 8934039259806266369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_Radius
       value: 1
@@ -7181,6 +7193,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pajaro (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4152460879101738338, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
+    - target: {fileID: 4902294701687453369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
     - target: {fileID: 8509823002271967895, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -7197,6 +7217,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587790490317543323, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
     - target: {fileID: 8934039259806266369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_Radius
       value: 1
@@ -12772,6 +12796,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pajaro (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4152460879101738338, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 240c109a1c9c1634484405d1abccbd21, type: 2}
+    - target: {fileID: 4902294701687453369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 240c109a1c9c1634484405d1abccbd21, type: 2}
     - target: {fileID: 8509823002271967895, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -12788,6 +12820,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587790490317543323, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 240c109a1c9c1634484405d1abccbd21, type: 2}
     - target: {fileID: 8934039259806266369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_Radius
       value: 1
@@ -17821,6 +17857,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pajaro (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4152460879101738338, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
+    - target: {fileID: 4902294701687453369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
     - target: {fileID: 8509823002271967895, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -17837,6 +17881,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587790490317543323, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31f260cff3fbd724d904b7b25f4ee02c, type: 2}
     - target: {fileID: 8934039259806266369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_Radius
       value: 1
@@ -18694,6 +18742,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pajaro (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4152460879101738338, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
+    - target: {fileID: 4902294701687453369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
     - target: {fileID: 8509823002271967895, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -18710,6 +18766,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8587790490317543323, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b98d31835c31c648a2515381b0e6087, type: 2}
     - target: {fileID: 8934039259806266369, guid: d709d3644c5be804590b0f82c79d915d, type: 3}
       propertyPath: m_Radius
       value: 1

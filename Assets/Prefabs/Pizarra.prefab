@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ayuda Pistola
+  m_text: Reglas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51c51d5e60da6b34c8165ca476b3b29b, type: 2}
   m_sharedMaterial: {fileID: 7403061533338416289, guid: 51c51d5e60da6b34c8165ca476b3b29b, type: 2}
@@ -2783,10 +2783,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AYUDA PISTOLA
+  m_text: "REGLAS\nUsa el martillo para romper los dientes.\nEl n\xFAmero que aparece
+    tras romperlo indica el n\xFAmero de bombas alrededor.\nPierdes una vida si revelas
+    una bomba.\nLa pistola te sirve de gu\xEDa para marcar dientes, bien como dudoso
+    o como bomba.\nGanas cuando rompes todos los dientes con n\xFAmero, y pierdes
+    si te quedas sin vida o sin tiempo.\n\xA1Recuerda que puedes usar una pista para
+    iluminar un diente con n\xFAmero!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51c51d5e60da6b34c8165ca476b3b29b, type: 2}
+  m_sharedMaterial: {fileID: 7403061533338416289, guid: 51c51d5e60da6b34c8165ca476b3b29b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2810,8 +2815,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 118
-  m_fontSizeBase: 118
+  m_fontSize: 85
+  m_fontSizeBase: 85
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

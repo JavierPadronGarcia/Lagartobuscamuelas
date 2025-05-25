@@ -601,7 +601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SonidoClickBoton
+      value: SonidoClickAtras
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6535,7 +6535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689429, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -113.5
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689429, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -21174,7 +21174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689428, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_Name
-      value: Ayuda
+      value: Reglas
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689428, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_Layer
@@ -21302,10 +21302,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
@@ -21313,7 +21317,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 876656119}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 876656119}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
@@ -21321,7 +21333,15 @@ PrefabInstance:
       value: ActivarAyuda
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SonidoClickBoton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CanvasController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: CanvasController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
@@ -21330,6 +21350,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470416729397689430, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7784602899432952582, guid: 3d8bc78a084b6b0489ce3fccdbd481cd, type: 3}

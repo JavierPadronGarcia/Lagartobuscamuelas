@@ -16,7 +16,7 @@ public class FlagPool : MonoBehaviour
     // Método que se ejecuta antes del primer frame
     void Start()
     {
-        amountToPool = PlayerPrefs.GetInt("Bombas");
+        amountToPool = 32;
         // Generamos todos los objetos
         for (int i = 0; i < amountToPool; i++)
         {

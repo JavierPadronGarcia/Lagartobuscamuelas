@@ -1,10 +1,8 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class Tooth : MonoBehaviour
 {
@@ -62,29 +60,22 @@ public class Tooth : MonoBehaviour
         isRevealed = true;
 
         GameManager gm = FindFirstObjectByType<GameManager>();
+        breakSFX.Play();
+        InteractorHandedness? malletHand = null;
+
+        malletHand = gm.getMalletHand();
+
+        if (malletHand != null)
+        {
+            HapticsUtility.SendHapticImpulse(0.8f, 0.2f, malletHand.Equals(InteractorHandedness.Left) ? HapticsUtility.Controller.Left : HapticsUtility.Controller.Right);
+        }
 
         if (isMine)
         {
-            //rend.material = mineMaterial;
-            Debug.Log("Boom! You hit a mine.");
-
-            breakSFX.Play();
-
-            // Quitar vida
             gm.LoseHealth();
         }
         else
         {
-            //rend.material = revealedMaterial;
-            //Debug.Log("Revealed Tooth. Adjacent mines: " + adjacentMines);
-
-            //if (adjacentMines == 0) {
-            //    RevealAdjacent();
-            //}
-
-            breakSFX.Play();
-
-            // Verifica si ya ganó después de revelar un diente sano
             gm.CheckWinCondition();
         }
     }

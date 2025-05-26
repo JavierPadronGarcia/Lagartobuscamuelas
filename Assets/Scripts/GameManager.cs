@@ -2,12 +2,11 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.SceneManagement;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Comfort;
 using UnityEngine.UI;
 using System.Collections;
-using Unity.XR.CoreUtils;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 public class GameManager : MonoBehaviour
 {
@@ -239,5 +238,37 @@ public class GameManager : MonoBehaviour
         chosen.highlight.UseHint();
 
         hints--;
+    }
+
+    private InteractorHandedness? malletHand;
+
+    public void objectGrab(SelectEnterEventArgs args)
+    {
+        XROrigin.BroadcastMessage("HideController", args.interactorObject.handedness);
+        AudioManager.instance.PlaySFX("click_001");
+
+        string interactableObject = args.interactableObject.transform.gameObject.name;
+
+        if (interactableObject.Equals("Martillo"))
+        {
+            malletHand = args.interactorObject.handedness;
+        }
+    }
+
+    public void objectDrop(SelectExitEventArgs args)
+    {
+        XROrigin.BroadcastMessage("ShowController", args.interactorObject.handedness);
+
+        string interactableObject = args.interactableObject.transform.gameObject.name;
+
+        if (interactableObject.Equals("Martillo"))
+        {
+            malletHand = null;
+        }
+    }
+
+    public InteractorHandedness? getMalletHand()
+    {
+        return malletHand;
     }
 }

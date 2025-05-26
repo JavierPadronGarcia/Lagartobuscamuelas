@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
         if (GameState.isWin)
         {
-            AudioManager.instance.PlaySFX("Victory");
+            AudioManager.instance.PlaySFX("Applause");
             resultText.text = "¡Has ganado!";
         }
         else
@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator GameOverCoroutine()
     {
         yield return new WaitForSeconds(2f);
+        StartCoroutine(FadeOutAudioCoroutine(fadeDuration));
         StartCoroutine(FadeImageCoroutine(true));
         yield return new WaitForSeconds(fadeDuration + 0.2f);
         XROrigin.transform.SetPositionAndRotation(finishGamePosition.position, finishGamePosition.rotation);
@@ -195,6 +196,26 @@ public class GameManager : MonoBehaviour
         // Asegurar valor final exacto
         color.a = endAlpha;
         fadeImage.color = color;
+    }
+
+    private IEnumerator FadeOutAudioCoroutine(float fadeDuration = 1f)
+    {
+        float startVolume = AudioManager.instance.musicSource.volume;
+        float targetVolume = 0.1f;
+        float elapsedTime = 0f;
+
+        AudioManager.instance.blockSFXs = true;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, elapsedTime / fadeDuration);
+            AudioManager.instance.musicSource.volume = newVolume;
+            yield return null;
+        }
+
+        AudioManager.instance.blockSFXs = false;
+        AudioManager.instance.musicSource.volume = targetVolume;
     }
 
 
@@ -236,6 +257,7 @@ public class GameManager : MonoBehaviour
         // Pick one at random and highlight it
         Tooth chosen = validTeeth[Random.Range(0, validTeeth.Count)];
         chosen.highlight.UseHint();
+        AudioManager.instance.PlaySFX("Hint");
 
         hints--;
     }
@@ -245,7 +267,7 @@ public class GameManager : MonoBehaviour
     public void objectGrab(SelectEnterEventArgs args)
     {
         XROrigin.BroadcastMessage("HideController", args.interactorObject.handedness);
-        AudioManager.instance.PlaySFX("click_001");
+        AudioManager.instance.PlaySFX("Pickup");
 
         string interactableObject = args.interactableObject.transform.gameObject.name;
 

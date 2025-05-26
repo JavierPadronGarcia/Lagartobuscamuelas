@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     public Dictionary<string, AudioClip> sfxClips = new Dictionary<string, AudioClip>();
     public Dictionary<string, AudioClip> musicClips = new Dictionary<string, AudioClip>();
 
+    public bool blockSFXs = false;
+
     // Método Awake que se llama al inicio antes de que se active el objeto. Útil para inicializar
     // variables u objetos que serán llamados por otros scripts (game managers, clases singleton, etc).
     private void Awake()
@@ -48,6 +50,8 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        musicSource.volume = 1f;
+
         switch (scene.name)
         {
             case "MainMenu":
@@ -77,6 +81,7 @@ public class AudioManager : MonoBehaviour
         sfxClips["Crash"] = Resources.Load<AudioClip>("SFX/321143__rodincoil__concrete-and-glass-breaking-in-dumpster");
         sfxClips["Revealed"] = Resources.Load<AudioClip>("SFX/DienteRevelado1");
         sfxClips["Victory"] = Resources.Load<AudioClip>("SFX/Victoria");
+        sfxClips["Lose"] = Resources.Load<AudioClip>("SFX/Lose");
 
         // UI Sounds
         LoadUISounds();
@@ -103,6 +108,8 @@ public class AudioManager : MonoBehaviour
     // Método de la clase singleton para reproducir efectos de sonido
     public void PlaySFX(string clipName)
     {
+        if (blockSFXs) return;
+
         if (sfxClips.ContainsKey(clipName))
         {
             sfxSource.clip = sfxClips[clipName];

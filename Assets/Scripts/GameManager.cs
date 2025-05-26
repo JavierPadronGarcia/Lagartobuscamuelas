@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         timerRunning = false;
         timeRemaining = 0f;
+        health = 0;
 
         // Guardar el estado de victoria/derrota en una variable accesible globalmente
         GameState.isWin = won;
